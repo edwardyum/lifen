@@ -57,12 +57,23 @@
                                                                         <DockPanel Width="120">
                                                                             <Button DockPanel.Dock="Bottom" Command="{Binding add_subtask_command}" Content="+" Height="15" Width="50" Background="White" BorderThickness="0.6"/>
                                                                             <StackPanel DataContext="{Binding subtasks}">
-                                                                                <DockPanel DataContext="{Binding}">
-                                                                                    <CheckBox DockPanel.Dock="Left" Content="" IsChecked ="{Binding Done, Mode=TwoWay}" Width="20"/>
-                                                                                    <Button DockPanel.Dock="Right" Command="{Binding add_subtask_to_today_command}" Content="t" Height="15" Width="15" Background="White" BorderThickness="0.6"/>
-                                                                                    <Button DockPanel.Dock="Right" Command="{Binding delete_subtask_command}" Content="x" Height="15" Width="15" Background="White" BorderThickness="0.6"/>
-                                                                                    <TextBox Text="{Binding Name, Mode=TwoWay}" />
-                                                                                </DockPanel>
+                                                                                <ItemsControl ItemsSource="{Binding}">
+                                                                                    <ItemsControl.ItemsPanel>
+                                                                                        <ItemsPanelTemplate>
+                                                                                            <StackPanel Orientation="Vertical"/>
+                                                                                        </ItemsPanelTemplate>
+                                                                                    </ItemsControl.ItemsPanel>
+                                                                                    <ItemsControl.ItemTemplate>
+                                                                                        <DataTemplate>
+                                                                                            <DockPanel DataContext="{Binding}">
+                                                                                                <CheckBox DockPanel.Dock="Left" Content="" IsChecked ="{Binding Done, Mode=TwoWay}" Width="20"/>
+                                                                                                <Button DockPanel.Dock="Right" Command="{Binding add_subtask_to_today_command}" Content="t" Height="15" Width="15" Background="White" BorderThickness="0.6"/>
+                                                                                                <Button DockPanel.Dock="Right" Command="{Binding delete_subtask_command}" Content="x" Height="15" Width="15" Background="White" BorderThickness="0.6"/>
+                                                                                                <TextBox Text="{Binding Name, Mode=TwoWay}" />
+                                                                                            </DockPanel>
+                                                                                        </DataTemplate>
+                                                                                    </ItemsControl.ItemTemplate>
+                                                                                </ItemsControl>
                                                                             </StackPanel>
                                                                             
                                                                         </DockPanel>

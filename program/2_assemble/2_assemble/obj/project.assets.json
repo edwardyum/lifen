@@ -460,11 +460,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\e.yumagulov\\Desktop\\системы\\program\\program\\2_assemble\\2_assemble\\2_assemble.csproj",
+      "projectUniqueName": "C:\\Users\\e.yumagulov\\Desktop\\системы\\lifen\\program\\2_assemble\\2_assemble\\2_assemble.csproj",
       "projectName": "2_assemble",
-      "projectPath": "C:\\Users\\e.yumagulov\\Desktop\\системы\\program\\program\\2_assemble\\2_assemble\\2_assemble.csproj",
+      "projectPath": "C:\\Users\\e.yumagulov\\Desktop\\системы\\lifen\\program\\2_assemble\\2_assemble\\2_assemble.csproj",
       "packagesPath": "C:\\Users\\e.yumagulov\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\e.yumagulov\\Desktop\\системы\\program\\program\\2_assemble\\2_assemble\\obj\\",
+      "outputPath": "C:\\Users\\e.yumagulov\\Desktop\\системы\\lifen\\program\\2_assemble\\2_assemble\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

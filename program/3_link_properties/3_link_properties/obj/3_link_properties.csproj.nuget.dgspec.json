@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\e.yumagulov\\Desktop\\системы\\program\\program\\3_link_properties\\3_link_properties\\3_link_properties.csproj": {}
+    "C:\\Users\\e.yumagulov\\Desktop\\системы\\lifen\\program\\3_link_properties\\3_link_properties\\3_link_properties.csproj": {}
   },
   "projects": {
-    "C:\\Users\\e.yumagulov\\Desktop\\системы\\program\\program\\3_link_properties\\3_link_properties\\3_link_properties.csproj": {
+    "C:\\Users\\e.yumagulov\\Desktop\\системы\\lifen\\program\\3_link_properties\\3_link_properties\\3_link_properties.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\e.yumagulov\\Desktop\\системы\\program\\program\\3_link_properties\\3_link_properties\\3_link_properties.csproj",
+        "projectUniqueName": "C:\\Users\\e.yumagulov\\Desktop\\системы\\lifen\\program\\3_link_properties\\3_link_properties\\3_link_properties.csproj",
         "projectName": "3_link_properties",
-        "projectPath": "C:\\Users\\e.yumagulov\\Desktop\\системы\\program\\program\\3_link_properties\\3_link_properties\\3_link_properties.csproj",
+        "projectPath": "C:\\Users\\e.yumagulov\\Desktop\\системы\\lifen\\program\\3_link_properties\\3_link_properties\\3_link_properties.csproj",
         "packagesPath": "C:\\Users\\e.yumagulov\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\e.yumagulov\\Desktop\\системы\\program\\program\\3_link_properties\\3_link_properties\\obj\\",
+        "outputPath": "C:\\Users\\e.yumagulov\\Desktop\\системы\\lifen\\program\\3_link_properties\\3_link_properties\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

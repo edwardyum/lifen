@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "is0JvdyGpjASkIjebKpl4uZEXEzMCsW6VMtQ0+/R4+w+oO5yhiWwzjQ31/JmKVcYr2cg/g6nUt/qGjPgu+w+Jg==",
+  "dgSpecHash": "lyvLd/hPlRNhs1l3jn2YZ2c3B9/rgRSU8dIcGIQwlh4uWeu5uecCcjyr3PI1nZY11N0cXfyiBU99hhBBu2z3Ng==",
   "success": true,
-  "projectFilePath": "C:\\Users\\e.yumagulov\\Desktop\\системы\\program\\program\\1_db\\db\\db.csproj",
+  "projectFilePath": "C:\\Users\\e.yumagulov\\Desktop\\системы\\lifen\\program\\1_db\\db\\db.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\e.yumagulov\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\e.yumagulov\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",

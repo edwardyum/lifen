@@ -15,7 +15,8 @@ namespace _2_assemble
 
     internal static class Manager
     {
-        static string connction_string = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\db.mdf;Integrated Security=True";
+        static string connction_string = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\e.yumagulov\Desktop\системы\lifen\program\1_db\db\db.mdf;Integrated Security=True";
+        //static string connction_string = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\db.mdf;Integrated Security=True";
         //static string connction_string = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\проекты\program\program\1_db\db\db.mdf;Integrated Security=True";
 
         public static List<Project> projects { get; set; }
