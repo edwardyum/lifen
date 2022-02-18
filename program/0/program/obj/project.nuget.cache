@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "ekiCn3CtlrVCVOwIQaGKhHWLIWTqdQc8JaPg47FhAsFm5ymIVdvPJVfcphzo4yYaH//5986R6VWwMGbr0K8ReA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\e.yumagulov\\Desktop\\системы\\program\\program\\program\\program.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\e.yumagulov\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.12\\microsoft.netcore.app.host.win-x64.5.0.12.nupkg.sha512"
+  ],
+  "logs": []
+}

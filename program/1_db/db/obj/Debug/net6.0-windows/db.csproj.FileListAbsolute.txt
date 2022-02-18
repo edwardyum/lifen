@@ -1,0 +1,48 @@
+C:\Users\e.yumagulov\Desktop\системы\program\база данных\db\db\bin\Debug\net6.0-windows\db.exe
+C:\Users\e.yumagulov\Desktop\системы\program\база данных\db\db\bin\Debug\net6.0-windows\db.deps.json
+C:\Users\e.yumagulov\Desktop\системы\program\база данных\db\db\bin\Debug\net6.0-windows\db.runtimeconfig.json
+C:\Users\e.yumagulov\Desktop\системы\program\база данных\db\db\bin\Debug\net6.0-windows\db.dll
+C:\Users\e.yumagulov\Desktop\системы\program\база данных\db\db\bin\Debug\net6.0-windows\ref\db.dll
+C:\Users\e.yumagulov\Desktop\системы\program\база данных\db\db\bin\Debug\net6.0-windows\db.pdb
+C:\Users\e.yumagulov\Desktop\системы\program\база данных\db\db\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+C:\Users\e.yumagulov\Desktop\системы\program\база данных\db\db\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\e.yumagulov\Desktop\системы\program\база данных\db\db\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\e.yumagulov\Desktop\системы\program\база данных\db\db\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\e.yumagulov\Desktop\системы\program\база данных\db\db\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\e.yumagulov\Desktop\системы\program\база данных\db\db\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\e.yumagulov\Desktop\системы\program\база данных\db\db\obj\Debug\net6.0-windows\db.csproj.AssemblyReference.cache
+C:\Users\e.yumagulov\Desktop\системы\program\база данных\db\db\obj\Debug\net6.0-windows\db.Form1.resources
+C:\Users\e.yumagulov\Desktop\системы\program\база данных\db\db\obj\Debug\net6.0-windows\db.csproj.GenerateResource.cache
+C:\Users\e.yumagulov\Desktop\системы\program\база данных\db\db\obj\Debug\net6.0-windows\db.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\e.yumagulov\Desktop\системы\program\база данных\db\db\obj\Debug\net6.0-windows\db.AssemblyInfoInputs.cache
+C:\Users\e.yumagulov\Desktop\системы\program\база данных\db\db\obj\Debug\net6.0-windows\db.AssemblyInfo.cs
+C:\Users\e.yumagulov\Desktop\системы\program\база данных\db\db\obj\Debug\net6.0-windows\db.csproj.CoreCompileInputs.cache
+C:\Users\e.yumagulov\Desktop\системы\program\база данных\db\db\obj\Debug\net6.0-windows\db.csproj.CopyComplete
+C:\Users\e.yumagulov\Desktop\системы\program\база данных\db\db\obj\Debug\net6.0-windows\db.dll
+C:\Users\e.yumagulov\Desktop\системы\program\база данных\db\db\obj\Debug\net6.0-windows\ref\db.dll
+C:\Users\e.yumagulov\Desktop\системы\program\база данных\db\db\obj\Debug\net6.0-windows\db.pdb
+C:\Users\e.yumagulov\Desktop\системы\program\база данных\db\db\obj\Debug\net6.0-windows\db.genruntimeconfig.cache
+C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\bin\Debug\net6.0-windows\db.exe
+C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\bin\Debug\net6.0-windows\db.deps.json
+C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\bin\Debug\net6.0-windows\db.runtimeconfig.json
+C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\bin\Debug\net6.0-windows\db.dll
+C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\bin\Debug\net6.0-windows\ref\db.dll
+C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\bin\Debug\net6.0-windows\db.pdb
+C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\obj\Debug\net6.0-windows\db.csproj.AssemblyReference.cache
+C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\obj\Debug\net6.0-windows\db.Form1.resources
+C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\obj\Debug\net6.0-windows\db.csproj.GenerateResource.cache
+C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\obj\Debug\net6.0-windows\db.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\obj\Debug\net6.0-windows\db.AssemblyInfoInputs.cache
+C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\obj\Debug\net6.0-windows\db.AssemblyInfo.cs
+C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\obj\Debug\net6.0-windows\db.csproj.CoreCompileInputs.cache
+C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\obj\Debug\net6.0-windows\db.csproj.CopyComplete
+C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\obj\Debug\net6.0-windows\db.dll
+C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\obj\Debug\net6.0-windows\ref\db.dll
+C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\obj\Debug\net6.0-windows\db.pdb
+C:\Users\e.yumagulov\Desktop\системы\program\program\1_db\db\obj\Debug\net6.0-windows\db.genruntimeconfig.cache
