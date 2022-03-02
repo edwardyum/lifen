@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "64ea0ea3-5adf-4e06-a2b7-591e10e0d74f": {
+      "ProjectGuid": "64ea0ea3-5adf-4e06-a2b7-591e10e0d74f",
+      "DisplayName": "app",
+      "ColorIndex": 0
+    },
+    "76215706-c25b-4c59-a59d-e7fc5cd8dede": {
+      "ProjectGuid": "76215706-c25b-4c59-a59d-e7fc5cd8dede",
+      "DisplayName": "Solution Items",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

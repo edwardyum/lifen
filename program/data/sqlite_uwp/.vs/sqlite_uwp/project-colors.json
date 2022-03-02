@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "dfad4018-1c21-458c-831a-856feef700b9": {
+      "ProjectGuid": "dfad4018-1c21-458c-831a-856feef700b9",
+      "DisplayName": "sqlite_uwp",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
