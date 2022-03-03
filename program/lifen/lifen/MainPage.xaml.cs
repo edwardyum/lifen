@@ -25,6 +25,9 @@ namespace lifen
         public MainPage()
         {
             this.InitializeComponent();
+
+            Manager.initialize();
+            Manager.execute();
         }
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -65,9 +68,7 @@ namespace lifen
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            Manager.initialize();
-
-            Manager.execute();
+            
         }
     }
 }

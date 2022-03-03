@@ -51,7 +51,7 @@ namespace app_db
             Dictionary<string, string> values = new Dictionary<string, string>();
             values.Add(Tasks.name, "задача");
             values.Add(Tasks.creation_date, Time.now());
-            values.Add(Tasks.done, "false");
+            values.Add(Tasks.done, Tools.bool_to_1_or_0(false));
 
             string row = SQLite.add(Tables.tasks, values);
 
@@ -154,7 +154,7 @@ namespace app_db
         public void set_done()
         {
             Dictionary<string, string> value = new Dictionary<string, string>();
-            value.Add(Tasks.done, Convert.ToInt32(done).ToString());
+            value.Add(Tasks.done, Tools.bool_to_1_or_0(done));
             value.Add(Tasks.completion_date, Time.now());
 
             Dictionary<string, string> where = this_task();

@@ -15,5 +15,10 @@ namespace app_db
         }
 
 
+        public static string bool_to_1_or_0(bool b)
+        {
+            return Convert.ToInt32(b).ToString();
+        }
+
     }
 }

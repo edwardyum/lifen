@@ -14,7 +14,11 @@ namespace app_db
         public static void execute()
         {
             objective.form();
+            set_today_tasks();
+        }
 
+        private static void set_today_tasks()
+        {
             tasks_for_today = SQLite.get_tasks_for_today();
             objective.check_for_today();
             objective.check_for_today_back();

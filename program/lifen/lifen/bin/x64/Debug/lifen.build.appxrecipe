@@ -28,8 +28,23 @@
     <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\program\lifen\lifen\bin\x64\Debug\lifen.exe">
       <PackagePath>entrypoint\lifen.exe</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\e.yumagulov\.nuget\packages\microsoft.data.sqlite.core\6.0.2\lib\netstandard2.0\Microsoft.Data.Sqlite.dll">
+      <PackagePath>Microsoft.Data.Sqlite.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.netcore.universalwindowsplatform\6.2.12\runtimes\win10-x64\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\e.yumagulov\.nuget\packages\sqlitepclraw.bundle_winsqlite3\2.0.7\lib\netstandard2.0\SQLitePCLRaw.batteries_v2.dll">
+      <PackagePath>SQLitePCLRaw.batteries_v2.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\e.yumagulov\.nuget\packages\sqlitepclraw.core\2.0.7\lib\netstandard2.0\SQLitePCLRaw.core.dll">
+      <PackagePath>SQLitePCLRaw.core.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\e.yumagulov\.nuget\packages\sqlitepclraw.provider.winsqlite3\2.0.7\lib\netstandard2.0\SQLitePCLRaw.provider.winsqlite3.dll">
+      <PackagePath>SQLitePCLRaw.provider.winsqlite3.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\e.yumagulov\.nuget\packages\system.runtime.compilerservices.unsafe\4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll">
+      <PackagePath>System.Runtime.CompilerServices.Unsafe.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.19041.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
@@ -70,8 +85,8 @@
     <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\program\lifen\lifen\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\program\lifen\lifen\bin\x64\Debug\BlankPage1.xbf">
-      <PackagePath>BlankPage1.xbf</PackagePath>
+    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\program\lifen\lifen\bin\x64\Debug\pages\Lists.xbf">
+      <PackagePath>pages\Lists.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\program\lifen\lifen\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>

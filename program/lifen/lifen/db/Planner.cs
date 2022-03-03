@@ -9,6 +9,6 @@ namespace lifen
     internal static class Planner
     {
         static public readonly string date = "date";
-        static public readonly string task_id = "task_id";
+        static public readonly string task = "task";
     }
 }

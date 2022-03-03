@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\e.yumagulov\Desktop\системы\lifen\program\app_db\app_db\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-03-02T16:53:59.757</Modified>
+      <Modified>2022-03-03T12:11:37.570</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\program\app_db\app_db\bin\x86\Debug\app_db.exe">
       <PackagePath>entrypoint\app_db.exe</PackagePath>
-      <Modified>2022-03-02T16:53:58.712</Modified>
+      <Modified>2022-03-03T12:11:36.828</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\.nuget\packages\microsoft.data.sqlite.core\6.0.2\lib\netstandard2.0\Microsoft.Data.Sqlite.dll">
       <PackagePath>Microsoft.Data.Sqlite.dll</PackagePath>
@@ -118,11 +118,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\program\app_db\app_db\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2022-03-02T16:53:58.635</Modified>
+      <Modified>2022-03-03T12:11:36.759</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\program\app_db\app_db\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2022-03-02T16:53:58.635</Modified>
+      <Modified>2022-03-03T12:11:36.759</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -134,7 +134,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\program\app_db\app_db\bin\x86\Debug\Core\app_db.exe">
       <PackagePath>app_db.exe</PackagePath>
-      <Modified>2022-03-02T16:53:59.749</Modified>
+      <Modified>2022-03-03T12:11:37.565</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

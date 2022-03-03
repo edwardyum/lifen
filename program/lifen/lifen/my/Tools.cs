@@ -3,17 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
 
 namespace lifen
 {
 
     // ДОБАВИТЬ КЛАСС В БИБЛИОТЕКУ
 
-    internal static class Tools
+    public static class Tools
     {
-        public static string get_assembly_dirrectory()          // папка в которой находится исполняемый файл
+        public static string get_local_folder()
         {
-            return System.Reflection.Assembly.GetExecutingAssembly().Location;
+            return ApplicationData.Current.LocalFolder.Path;
         }
+
+
+        public static string bool_to_1_or_0(bool b)
+        {
+            return Convert.ToInt32(b).ToString();
+        }
+
     }
 }

@@ -9,47 +9,30 @@ namespace lifen
 {
     internal static class Manager
     {
-        public static ObservableCollection<Objective> projects { get; set; } = new ObservableCollection<Objective>();
+        public static Objective root = new Objective("1");
+
+        public static Objective today = new Objective("1");
+        public static List<string> tasks_for_today;
+
 
         public static void initialize()
         {
-            //Log.initialize();
-            DBS.initialize();
-            //DBInteraction.initialize();
-        }
-
-        public static void check()
-        {
-
+            SQLite.initialize();
         }
 
         public static void execute()
         {
-            check();
-            connect_to_db();
-
-            form_projects();
+            root.form();
+            set_today_tasks();
         }
 
-
-        private static void form_projects()
+        private static void set_today_tasks()
         {
-            projects = DBInteraction.get_projects();
+            tasks_for_today = SQLite.get_tasks_for_today();
+            root.check_for_today();
+            root.check_for_today_back();
 
-            foreach (Objective obj in projects)
-                obj.form_subtasks();
-        }
-
-        // db
-
-        public static void connect_to_db()
-        {
-            DBS.open();
-        }
-
-        public static void disconnect_to_db()
-        {
-            DBS.close();
+            today = root;
         }
 
     }

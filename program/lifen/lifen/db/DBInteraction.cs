@@ -28,7 +28,7 @@ namespace lifen
                 {
                     string id = Convert.ToString(reader[Tasks.Id]);
 
-                    Objective project = new Objective(id, "1");
+                    Objective project = new Objective("1");
                     project.obtaining_data_from_db = true;
 
                     project.Name = Convert.ToString(reader[Tasks.name]);
@@ -73,7 +73,7 @@ namespace lifen
                 {
                     string id = Convert.ToString(reader[Tasks.Id]);
 
-                    Objective objective = new Objective(id, idt);
+                    Objective objective = new Objective(idt);
                     objective.obtaining_data_from_db = true;
 
                     objective.Name = Convert.ToString(reader[Tasks.name]);
