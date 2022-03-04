@@ -56,3 +56,4 @@ C:\Users\e.yumagulov\Desktop\системы\lifen\program\lifen\lifen\obj\x64\De
 C:\Users\e.yumagulov\Desktop\системы\lifen\program\lifen\lifen\obj\x64\Debug\resources.en-us.resfiles.intermediate
 C:\Users\e.yumagulov\Desktop\системы\lifen\program\lifen\lifen\obj\x64\Debug\ProjectArchitectures.txt
 C:\Users\e.yumagulov\Desktop\системы\lifen\program\lifen\lifen\obj\x64\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_637424707200000000.json
+C:\Users\e.yumagulov\Desktop\системы\lifen\program\lifen\lifen\obj\x64\Debug\lifen.csproj.AssemblyReference.cache
