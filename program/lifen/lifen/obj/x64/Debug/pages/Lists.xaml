@@ -13,8 +13,8 @@
         <local:ListsViewModel/>
     </Page.DataContext>
 
-    <RelativePanel >
-        <StackPanel x:ConnectionId='2' x:Name="Projects" DataContext="{Binding root, UpdateSourceTrigger=PropertyChanged}" Orientation="Horizontal" Margin="200,0,0,0" Height="500">
+    <RelativePanel>
+        <StackPanel x:ConnectionId='2' x:Name="Projects" DataContext="{Binding root, UpdateSourceTrigger=PropertyChanged}" Orientation="Horizontal" Height="500">
             <ItemsControl ItemsSource="{Binding subtasks, UpdateSourceTrigger=PropertyChanged}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -24,8 +24,8 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         
-                        <RelativePanel Width="210">
-                            <TextBox x:Name="ProjectName" TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200">
+                        <RelativePanel Width="152">
+                            <TextBox x:Name="ProjectName" TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="150">
                                 <TextBox.ContextFlyout>
                                     <MenuFlyout>
                                         <MenuFlyoutItem Text="удалить проект" Command="{Binding delete_task_command, UpdateSourceTrigger=PropertyChanged}"/>
@@ -44,9 +44,9 @@
                                         <DataTemplate>
                                             
                                             <RelativePanel Height="70">
-                                                <TextBox x:Name="TaskName" TextWrapping="NoWrap" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }" Width="200"/>
+                                                <TextBox x:Name="TaskName" TextWrapping="NoWrap" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }" Width="150"/>
                                                 <CheckBox x:Name="Done" IsChecked="{Binding Done, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" RelativePanel.Below="TaskName" Width="10"/>
-                                                <Button x:Name="AddToday" Content="сегодня" Command="{Binding add_task_for_today_command}" RelativePanel.Below="TaskName" HorizontalAlignment="Left" Margin="27,0,0,0" Height="30" Width="120"/>
+                                                <Button x:Name="AddToday" Content="сегодня" Command="{Binding add_task_for_today_command}" RelativePanel.Below="TaskName" HorizontalAlignment="Left" Margin="27,0,0,0" Height="30" Width="60"/>
                                                 <DropDownButton Name="SubTasks" RelativePanel.Below="TaskName" RelativePanel.AlignRightWith="TaskName" Height="30" Width="47" CornerRadius="5">
                                                     <DropDownButton.Flyout>
                                                         <Flyout>

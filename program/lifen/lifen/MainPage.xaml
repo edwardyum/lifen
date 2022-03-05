@@ -12,15 +12,15 @@
         <local:ListsViewModel/>
     </Page.DataContext>
 
-    
+
     <NavigationView HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" SelectionChanged="NavigationView_SelectionChanged" ItemInvoked="NavigationView_ItemInvoked">
         <NavigationView.MenuItems>
             <NavigationViewItem Content="BlankPage1" Tag="BlankPage1"/>
             <NavigationViewItem Content="BlankPage1" Tag="BlankPage1"/>
         </NavigationView.MenuItems>
 
-        <Frame x:Name="contentFrame"/>
+        <Frame x:Name="contentFrame" />
     </NavigationView>
 
-    
+
 </Page>

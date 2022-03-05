@@ -27,7 +27,7 @@ namespace lifen
         public string DataCreation { get { return data_creation; } set { data_creation = value; } }
         public string Name { get { return name; } set { name = value; if (!obtaining_data_from_db) { set_name(); } } }
         public string Description { get { return description; } set { description = value; if (!obtaining_data_from_db) { set_description(); } } }
-        public bool Done { get { return done; } set { done = value; if (!obtaining_data_from_db) { set_done(); } } }
+        public bool Done { get { return done; } set { done = value; if (!obtaining_data_from_db) { set_done(value); } } }
         public string DataCompletion { get { return data_completion; } set { data_completion = value; } }        
 
 
@@ -128,6 +128,8 @@ namespace lifen
             SQLite.delete(Tables.hierarchy, Hierachy.child, id);
             // удачная находнка - инкапсуляция. удаляем не по ссылке на родителя или какие-то другие объекты,
             // а все строки, в которые входит текущая задача. и убирается необходимость в поле id родителя.
+            
+            delete_task_from_today();   // лучше вызвать методв в классе Objective, чем в SQLite. более универсально.
 
             Manager.execute();
         }
@@ -159,15 +161,19 @@ namespace lifen
             SQLite.update(Tables.tasks, value, where);
         }
 
-        public void set_done()
+        public void set_done(bool haveDone)
         {
             Dictionary<string, string> value = new Dictionary<string, string>();
-            value.Add(Tasks.done, Tools.bool_to_1_or_0(done));
+            value.Add(Tasks.done, Tools.bool_to_1_or_0(haveDone));
             value.Add(Tasks.completion_date, Time.now());
 
             Dictionary<string, string> where = this_task();
 
             SQLite.update(Tables.tasks, value, where);
+
+            if(subtasks!=null)
+                foreach (Objective task in subtasks)
+                    task.set_done(haveDone);
         }
 
         public void set_name()
@@ -181,7 +187,9 @@ namespace lifen
         }
 
 
+
         // today
+
         public void check_for_today()
         {
             if (Manager.tasks_for_today.Contains(id))
@@ -221,8 +229,8 @@ namespace lifen
         }
 
 
-        // не работает, поскольку добавляется ссылка на элемент, который уже содержит элеенты, включающие false. + при добавлении дублируются элементы true
-        public void create_today_only_structure_2(Objective objective)  // создаём новый корневой узел. вставляем в него ссылки на объекты, добавленные на сегодня
+        // нет возможности добавить существующие объекты, поскольку они включают и не отмеченные на сегодня. если я удалю неотмеченные в today, они удаляться и в оригинале
+        public void create_today_only_structure_2(Objective objective)  // создаём новый корневой узел. вставляем в него новые объекты с параметрами существующих
         {
             if (subtasks != null)
                 foreach (Objective task in subtasks)
@@ -232,7 +240,6 @@ namespace lifen
                         objective.subtasks.Add(subtask);
                         task.create_today_only_structure_2(subtask);
                     }
-                
         }
 
     }
