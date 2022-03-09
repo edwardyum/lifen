@@ -47,6 +47,8 @@ namespace lifen
 
             today = null;
             today = Manager.today;
+
+
         }
 
 

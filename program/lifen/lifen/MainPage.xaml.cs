@@ -66,6 +66,11 @@ namespace lifen
             }
         }
 
+        public void refresh()
+        {
+            Frame rootFrame = new Frame();
+        }
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             

@@ -9,6 +9,7 @@
     <RootPropertyPathName Name="root" />
     <RootPropertyPathName Name="add_task_command" />
     <RootPropertyPathName Name="add_task_for_today_command" />
+    <RootPropertyPathName Name="added_for_today" />
     <RootPropertyPathName Name="delete_task_command" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
@@ -26,8 +27,8 @@
     <RootType FullName="lifen.ListsViewModel" />
     <RootType FullName="Windows.UI.Xaml.Controls.RelativePanel">
       <RootProperty Name="Children" />
-      <RootProperty Name="ContextFlyout" />
       <RootProperty Name="Width" />
+      <RootProperty Name="ContextFlyout" />
       <RootProperty Name="Height" />
       <RootMethod Name="GetRightOf" />
       <RootMethod Name="SetRightOf" />
@@ -41,13 +42,13 @@
       <RootProperty Name="Orientation" />
       <RootProperty Name="Height" />
       <RootProperty Name="Children" />
-      <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="Content" />
       <RootProperty Name="Command" />
       <RootProperty Name="Height" />
       <RootProperty Name="Width" />
+      <RootProperty Name="Foreground" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Margin" />
     </RootType>
@@ -70,19 +71,21 @@
       <RootProperty Name="Text" />
       <RootProperty Name="TextWrapping" />
       <RootProperty Name="Width" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="Margin" />
       <RootProperty Name="ContextFlyout" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.CheckBox">
-      <RootProperty Name="Content" />
       <RootProperty Name="IsChecked" />
       <RootProperty Name="Width" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.DropDownButton">
       <RootProperty Name="Name" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="CornerRadius" />
       <RootProperty Name="Flyout" />
       <RootProperty Name="Height" />
       <RootProperty Name="Width" />
-      <RootProperty Name="CornerRadius" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Flyout">
       <RootProperty Name="Content" />
@@ -93,6 +96,13 @@
     <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyoutItem">
       <RootProperty Name="Text" />
       <RootProperty Name="Command" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Primitives.ToggleButton">
+      <RootProperty Name="Content" />
+      <RootProperty Name="Command" />
+      <RootProperty Name="IsChecked" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Width" />
     </RootType>
     <RootType FullName="lifen.BlankPage1" />
     <RootType FullName="Windows.UI.Xaml.Controls.NavigationView">
