@@ -19,7 +19,7 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>C:\Users\e.yumagulov\Desktop\системы\lifen\program\lifen\lifen\bin\x64\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>F9AC7F084B16AF4ECFFEDD9A8D9D7366E233FCC09BB9F4EE5462211C62117D75</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>DF6AF057F7D2CE17BDAF1D4AC81D4DAB1BB96C15BAE08F799FFC947F62AAF8CF</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>c19d2c2c-30c6-411e-955d-f8cc6422ade3_1.0.0.0_x64__2wpxf91wdknyr</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>c19d2c2c-30c6-411e-955d-f8cc6422ade3_2wpxf91wdknyr!App</RegisteredUserModeAppID>
     <RegisteredPackageID>c19d2c2c-30c6-411e-955d-f8cc6422ade3</RegisteredPackageID>
@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\e.yumagulov\Desktop\системы\lifen\program\lifen\lifen\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-03-09T16:11:27.268</Modified>
+      <Modified>2022-03-23T16:22:46.376</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\program\lifen\lifen\bin\x64\Debug\lifen.exe">
       <PackagePath>entrypoint\lifen.exe</PackagePath>
-      <Modified>2022-03-09T16:11:26.599</Modified>
+      <Modified>2022-03-23T16:22:45.692</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\.nuget\packages\microsoft.data.sqlite.core\6.0.2\lib\netstandard2.0\Microsoft.Data.Sqlite.dll">
       <PackagePath>Microsoft.Data.Sqlite.dll</PackagePath>
@@ -106,19 +106,19 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\program\lifen\lifen\bin\x64\Debug\lifen.xr.xml">
       <PackagePath>lifen.xr.xml</PackagePath>
-      <Modified>2022-03-09T16:01:01.037</Modified>
+      <Modified>2022-03-23T16:21:48.750</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\program\lifen\lifen\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2022-03-09T16:11:26.503</Modified>
+      <Modified>2022-03-23T16:22:45.616</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\program\lifen\lifen\bin\x64\Debug\pages\Lists.xbf">
       <PackagePath>pages\Lists.xbf</PackagePath>
-      <Modified>2022-03-09T16:11:26.498</Modified>
+      <Modified>2022-03-23T16:22:45.606</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\program\lifen\lifen\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2022-03-09T16:11:26.504</Modified>
+      <Modified>2022-03-23T16:22:45.617</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.19041.0\\redist\Debug\X64\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -130,11 +130,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\program\lifen\lifen\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2022-03-04T13:09:51.341</Modified>
+      <Modified>2022-03-23T15:53:03.826</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\program\lifen\lifen\bin\x64\Debug\Core\lifen.exe">
       <PackagePath>lifen.exe</PackagePath>
-      <Modified>2022-03-09T16:11:27.263</Modified>
+      <Modified>2022-03-23T16:22:46.371</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\lib\uap10.0\Microsoft.UI.Xaml.winmd">
       <PackagePath>Microsoft.UI.Xaml.winmd</PackagePath>

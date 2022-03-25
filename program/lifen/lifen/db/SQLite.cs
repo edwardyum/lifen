@@ -11,8 +11,6 @@ using Windows.Storage;
 namespace lifen
 {
 
-    // ДОБАВИТЬ КЛАСС В БИБЛИОТЕКУ
-
     internal static class SQLite
     {
         private static string db_name = "db.db";

@@ -33,7 +33,7 @@ namespace lifen
                     if (dt.Equals(for_check))
                         k++;
                     
-                    if(k>=2)
+                    if(k>=1)
                         return true;
                 }
             }
@@ -46,7 +46,7 @@ namespace lifen
             form();
             set_today_tasks();
 
-            refresh.Invoke();
+            refresh?.Invoke();
         }
 
         private static void form()

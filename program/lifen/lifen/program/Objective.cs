@@ -20,7 +20,7 @@ namespace lifen
         private string data_creation = string.Empty;
         private string data_completion = string.Empty;
 
-        public bool added_for_today = false;
+        public bool added_for_today { get; set; } = false;
 
         //
         public bool obtaining_data_from_db = false;

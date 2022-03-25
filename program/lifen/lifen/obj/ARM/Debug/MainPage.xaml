@@ -8,20 +8,15 @@
     x:Class="lifen.MainPage"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"                     >
-    <Page.DataContext>
-        <local:MainPageViewModel/>
-    </Page.DataContext>
 
-    
     <NavigationView x:ConnectionId='2' HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"                                                                                            >
         <NavigationView.MenuItems>
             <NavigationViewItem Content="BlankPage1" Tag="BlankPage1"/>
             <NavigationViewItem Content="BlankPage1" Tag="BlankPage1"/>
         </NavigationView.MenuItems>
 
-        <Frame x:ConnectionId='3' x:Name="contentFrame"/>
+        <Frame x:ConnectionId='3' x:Name="contentFrame" />
     </NavigationView>
 
-    
 </Page>
 
