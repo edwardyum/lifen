@@ -1,0 +1,27 @@
+﻿<Page x:ConnectionId='1'
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:lifen"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Custom="using:Microsoft.UI.Xaml.Controls"
+    x:Class="lifen.MainPage"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"                     >
+    <Page.DataContext>
+        <local:MainPageViewModel/>
+    </Page.DataContext>
+
+    
+    <NavigationView x:ConnectionId='2' HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"                                                                                            >
+        <NavigationView.MenuItems>
+            <NavigationViewItem Content="BlankPage1" Tag="BlankPage1"/>
+            <NavigationViewItem Content="BlankPage1" Tag="BlankPage1"/>
+        </NavigationView.MenuItems>
+
+        <Frame x:ConnectionId='3' x:Name="contentFrame"/>
+    </NavigationView>
+
+    
+</Page>
+

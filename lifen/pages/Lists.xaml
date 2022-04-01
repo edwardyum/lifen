@@ -1,0 +1,210 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:lifen"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Custom="using:Microsoft.UI.Xaml.Controls"
+    xmlns:media="using:Microsoft.UI.Xaml.Media"
+    x:Class="lifen.BlankPage1"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+                    <media:AcrylicBrush x:Key="CustomAcrylicInAppBrush" BackgroundSource="Backdrop" TintOpacity="0.8" TintColor="Black" FallbackColor="Green"/>
+                    <media:AcrylicBrush x:Key="CustomAcrylicBackgroundBrush" BackgroundSource="HostBackdrop" TintOpacity="0.8" TintColor="Black" FallbackColor="Green"/>
+                    <media:AcrylicBrush x:Key="CustomAcrylicInAppLuminosity" BackgroundSource="Backdrop" TintOpacity="0.8" TintColor="SkyBlue" FallbackColor="SkyBlue"/>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+
+            <DataTemplate x:Key="ColorTemplate" x:DataType="SolidColorBrush">
+                <StackPanel Orientation="Horizontal" AutomationProperties.Name="{x:Bind Color}">
+                    <Rectangle Height="20" Width="20" Fill="{x:Bind}"/>
+                    <TextBlock Text="{x:Bind Color}" Margin="4,0,0,0"/>
+                </StackPanel>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Page.DataContext>
+        <local:ListsViewModel/>
+    </Page.DataContext>
+    
+    <RelativePanel>
+        <StackPanel x:Name="Projects" DataContext="{Binding root, UpdateSourceTrigger=PropertyChanged}" Orientation="Horizontal" Height="500">
+            <ItemsControl ItemsSource="{Binding subtasks, UpdateSourceTrigger=PropertyChanged}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <ScrollViewer>
+                        <RelativePanel Width="152">
+                            <TextBox x:Name="ProjectName" TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="150" Background="Black">
+                                <TextBox.ContextFlyout>
+                                    <MenuFlyout>
+                                        <MenuFlyoutItem Text="удалить проект" Command="{Binding delete_task_command, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </MenuFlyout>
+                                </TextBox.ContextFlyout>
+                            </TextBox>
+                            
+                            <StackPanel x:Name="TasksList" RelativePanel.Below="ProjectName">
+                                    <!--<StackPanel.Resources>
+                                        <Style TargetType="{}">
+                                            <Setter Property="Margin" Value="0,10,0,0"/>
+                                        </Style>
+                                    </StackPanel.Resources>-->
+                                <ItemsControl ItemsSource="{Binding subtasks}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Vertical"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                                <!--<ScrollViewer>-->
+
+                                                <RelativePanel Height="60" Background="Black" Margin="0,3,0,0" CornerRadius="2">
+                                                <!--<Rectangle Width="50" Height="100" Fill="{ThemeResource CustomAcrylicInAppLuminosity}" />-->
+                                                <TextBox x:Name="TaskName" TextWrapping="NoWrap" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }" ToolTipService.ToolTip="{Binding Name}" BorderThickness="0" Opacity="100" Canvas.ZIndex="1"  Width="150"/>
+                                                    <CheckBox x:Name="Done" IsChecked="{Binding Done, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" RelativePanel.Below="TaskName" Height="30" Width="10" />
+                                                    <Button x:Name="AddToday" Command="{Binding add_task_for_today_command}" RelativePanel.Below="TaskName" RelativePanel.AlignVerticalCenterWith="Done" Margin="27,0,0,0" Height="20" Width="60" Foreground="Gray" BorderBrush="#323234"/>
+
+                                                    <DropDownButton Name="SubTasks" RelativePanel.Below="TaskName" RelativePanel.AlignRightWith="TaskName" RelativePanel.AlignVerticalCenterWith="Done" Height="20" Width="56" CornerRadius="5" BorderBrush="#323234">
+                                                    <DropDownButton.Flyout>
+                                                        <Flyout>
+                                                            
+                                                            <RelativePanel >
+                                                                <StackPanel x:Name="ListSubtask">
+                                                                    <ItemsControl ItemsSource="{Binding subtasks}">
+                                                                    <ItemsControl.ItemTemplate>
+                                                                        <DataTemplate>
+                                                                            <RelativePanel>
+                                                                                <CheckBox x:Name="Done" IsChecked="{Binding Done, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                                                                <TextBox x:Name="SubtaskName" TextWrapping="NoWrap" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="27,0,0,0" Width="300"/>
+                                                                                <!--<Button x:Name="AddToday" Content="на сегодня" Command="{Binding add_task_for_today_command}"  RelativePanel.RightOf="SubtaskName" Height="30" Width="100"/>-->
+                                                                                <ToggleButton Content="на сегодня" Command="{Binding add_task_for_today_command}"  IsChecked="{Binding added_for_today}" RelativePanel.RightOf="SubtaskName" Height="30" Width="100"/>
+                                                                                <RelativePanel.ContextFlyout>
+                                                                                    <MenuFlyout>
+                                                                                        <MenuFlyoutItem Text="удалить" Command="{Binding delete_task_command, UpdateSourceTrigger=PropertyChanged}"/>
+                                                                                    </MenuFlyout>
+                                                                                </RelativePanel.ContextFlyout>
+                                                                            </RelativePanel>                                                                        
+                                                                        </DataTemplate>
+                                                                    </ItemsControl.ItemTemplate>
+                                                                    </ItemsControl>
+                                                                </StackPanel>
+                                                                <Button Content="новая подзадача" Command="{Binding add_task_command}" RelativePanel.Below="ListSubtask" Height="30" Width="200"/>
+                                                            </RelativePanel>
+                                                            
+                                                        </Flyout>
+                                                    </DropDownButton.Flyout>
+                                                </DropDownButton>
+                                                <RelativePanel.ContextFlyout>
+                                                    <MenuFlyout>
+                                                        <MenuFlyoutItem Text="удалить" Command="{Binding delete_task_command, UpdateSourceTrigger=PropertyChanged}"/>
+                                                    </MenuFlyout>
+                                                </RelativePanel.ContextFlyout>
+                                            </RelativePanel>
+
+                                                <!--</ScrollViewer>-->
+                                            </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+
+                            
+                            <Button Content="новая задача" Command="{Binding add_task_command}" RelativePanel.Below="TasksList" Height="30" Width="100" Foreground="LightGray"/>
+                            
+                        </RelativePanel>
+                        </ScrollViewer>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+
+        <Button Content="новый проект" Command="{Binding root.add_task_command}" RelativePanel.RightOf="Projects" Height="30" Width="100"/>
+
+        <StackPanel x:Name="Today" DataContext="{Binding today, UpdateSourceTrigger=PropertyChanged}" Orientation="Horizontal" RelativePanel.Below="Projects" Height="500">
+            <ItemsControl ItemsSource="{Binding subtasks}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+
+                        <RelativePanel Width="152">
+                            <TextBox x:Name="ProjectName" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Width="150" Background="Black"/>
+
+                            <StackPanel x:Name="TasksList" RelativePanel.Below="ProjectName">
+                                <ItemsControl ItemsSource="{Binding subtasks}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Vertical"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+
+                                            <RelativePanel>
+                                                <TextBox x:Name="TaskName" TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="150"/>
+                                                <CheckBox x:Name="Done" IsChecked="{Binding Done, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" RelativePanel.Below="TaskName"/>
+
+                                                <DropDownButton Name="SubTasks" RelativePanel.Below="TaskName" Margin="27,0,0,0" CornerRadius="5">
+                                                    <DropDownButton.Flyout>
+                                                        <Flyout>
+
+                                                            <RelativePanel >
+                                                                <StackPanel x:Name="ListSubtask">
+                                                                    <ItemsControl ItemsSource="{Binding subtasks}">
+                                                                        <ItemsControl.ItemTemplate>
+                                                                            <DataTemplate>
+                                                                                <RelativePanel>
+                                                                                    <CheckBox x:Name="Done" IsChecked="{Binding Done, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                                                                    <TextBox x:Name="SubtaskName" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Margin="27,0,0,0" Width="300"/>
+
+                                                                                </RelativePanel>
+                                                                            </DataTemplate>
+                                                                        </ItemsControl.ItemTemplate>
+                                                                    </ItemsControl>
+                                                                </StackPanel>
+                                                                <RelativePanel.ContextFlyout>
+                                                                    <MenuFlyout>
+                                                                        <MenuFlyoutItem Text="удалить" Command="{Binding delete_task_from_today_command, UpdateSourceTrigger=PropertyChanged}"/>
+                                                                    </MenuFlyout>
+                                                                </RelativePanel.ContextFlyout>
+                                                            </RelativePanel>
+
+                                                        </Flyout>
+                                                    </DropDownButton.Flyout>
+                                                </DropDownButton>
+                                                <RelativePanel.ContextFlyout>
+                                                    <MenuFlyout>
+                                                        <MenuFlyoutItem Text="удалить" Command="{Binding delete_task_from_today_command, UpdateSourceTrigger=PropertyChanged}"/>
+                                                    </MenuFlyout>
+                                                </RelativePanel.ContextFlyout>
+                                            </RelativePanel>
+
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+
+                        </RelativePanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+        
+
+
+    </RelativePanel>
+    
+</Page>
