@@ -27,5 +27,23 @@ namespace lifen
         static public readonly string source = "source";
         static public readonly string id_in_source = "id_in_source";
         static public readonly string appointed = "appointed";
+
+        //public static readonly string create =
+//CREATE TABLE "tasks" (
+//	"Id"	INTEGER NOT NULL UNIQUE,
+//	"creation_date"	TEXT NOT NULL UNIQUE,
+//	"name"	TEXT NOT NULL UNIQUE,
+//	"description"	TEXT,
+//	"done"	INTEGER,
+//	"completion_date"	TEXT,
+//	"canceled"	INTEGER,
+//	"cancellation_date"	TEXT,
+//	"importance"	INTEGER,
+//	"urgency"	INTEGER,
+//	"scope"	INTEGER,
+//	"result"	TEXT,
+//	PRIMARY KEY("Id" AUTOINCREMENT)
+//);
+
     }
 }

@@ -10,7 +10,7 @@
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>c19d2c2c-30c6-411e-955d-f8cc6422ade3</PackageIdentityName>
     <PackageIdentityPublisher>CN=e.yumagulov</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\e.yumagulov\Desktop\lifen\lifen\obj\x64\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\obj\x64\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -18,7 +18,7 @@
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\e.yumagulov\Desktop\lifen\lifen\bin\x64\Debug\AppX</LayoutDir>
+    <LayoutDir>C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\bin\x64\Debug\AppX</LayoutDir>
     <RegisteredManifestChecksum>DF6AF057F7D2CE17BDAF1D4AC81D4DAB1BB96C15BAE08F799FFC947F62AAF8CF</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>c19d2c2c-30c6-411e-955d-f8cc6422ade3_1.0.0.0_x64__2wpxf91wdknyr</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>c19d2c2c-30c6-411e-955d-f8cc6422ade3_2wpxf91wdknyr!App</RegisteredUserModeAppID>
@@ -27,16 +27,16 @@
     <RegisteredVersion>1.0.0.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\e.yumagulov\Desktop\lifen\lifen\bin\x64\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-04-01T16:59:43.412</Modified>
+      <Modified>2022-04-05T16:18:30.866</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\lifen\lifen\bin\x64\Debug\lifen.exe">
+    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\bin\x64\Debug\lifen.exe">
       <PackagePath>entrypoint\lifen.exe</PackagePath>
-      <Modified>2022-04-01T16:59:42.309</Modified>
+      <Modified>2022-04-05T16:18:29.988</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\.nuget\packages\microsoft.data.sqlite.core\6.0.2\lib\netstandard2.0\Microsoft.Data.Sqlite.dll">
       <PackagePath>Microsoft.Data.Sqlite.dll</PackagePath>
@@ -66,59 +66,59 @@
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
       <Modified>2020-12-02T01:52:00.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\lifen\lifen\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
       <Modified>2022-02-22T08:03:59.585</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\lifen\lifen\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
       <Modified>2021-12-03T12:10:08.540</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\lifen\lifen\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2021-12-03T12:10:08.542</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\lifen\lifen\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2021-12-03T12:10:08.543</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\lifen\lifen\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2021-12-03T12:10:08.543</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\lifen\lifen\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2021-12-03T12:10:08.544</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\lifen\lifen\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2021-12-03T12:10:08.544</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\lifen\lifen\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2021-12-03T12:10:08.545</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\lifen\lifen\bin\x64\Debug\lifen.xr.xml">
+    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\bin\x64\Debug\lifen.xr.xml">
       <PackagePath>lifen.xr.xml</PackagePath>
-      <Modified>2022-03-28T13:20:57.680</Modified>
+      <Modified>2022-04-05T13:06:08.655</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\lifen\lifen\bin\x64\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2022-04-01T16:59:42.219</Modified>
+      <Modified>2022-04-05T16:18:29.888</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\lifen\lifen\bin\x64\Debug\pages\Lists.xbf">
+    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\bin\x64\Debug\pages\Lists.xbf">
       <PackagePath>pages\Lists.xbf</PackagePath>
-      <Modified>2022-04-01T16:59:42.212</Modified>
+      <Modified>2022-04-05T16:18:29.883</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\lifen\lifen\bin\x64\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2022-04-01T16:59:42.219</Modified>
+      <Modified>2022-04-05T16:18:29.888</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.19041.0\\redist\Debug\X64\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -128,13 +128,13 @@
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2020-12-01T23:52:06.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\lifen\lifen\bin\x64\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2022-04-01T16:59:42.778</Modified>
+      <Modified>2022-04-05T14:20:07.132</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\lifen\lifen\bin\x64\Debug\Core\lifen.exe">
+    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\bin\x64\Debug\Core\lifen.exe">
       <PackagePath>lifen.exe</PackagePath>
-      <Modified>2022-04-01T16:59:43.404</Modified>
+      <Modified>2022-04-05T16:18:30.859</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\lib\uap10.0\Microsoft.UI.Xaml.winmd">
       <PackagePath>Microsoft.UI.Xaml.winmd</PackagePath>

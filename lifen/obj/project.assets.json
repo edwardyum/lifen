@@ -8954,11 +8954,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\e.yumagulov\\Desktop\\lifen\\lifen\\lifen.csproj",
+      "projectUniqueName": "C:\\Users\\e.yumagulov\\Desktop\\системы\\lifen\\lifen\\lifen.csproj",
       "projectName": "lifen",
-      "projectPath": "C:\\Users\\e.yumagulov\\Desktop\\lifen\\lifen\\lifen.csproj",
+      "projectPath": "C:\\Users\\e.yumagulov\\Desktop\\системы\\lifen\\lifen\\lifen.csproj",
       "packagesPath": "C:\\Users\\e.yumagulov\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\e.yumagulov\\Desktop\\lifen\\lifen\\obj\\",
+      "outputPath": "C:\\Users\\e.yumagulov\\Desktop\\системы\\lifen\\lifen\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [

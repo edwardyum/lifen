@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OJXCb8QrmQQ0uCBNcGAV+vyQ5vS2uxK2cSl02Tj6L+HFoUVhsRo+Jyhm2raCej5LHeDRBJuRwvowGMv9J375ow==",
+  "dgSpecHash": "OSFTrIXgh8aN+U+eovGIg7/dFmSOTWdu2UDsX11MHr4qcY/sTBwEtdXTXJ9G38m3+H+/qvLtDpAUhBtPbLGajA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\e.yumagulov\\Desktop\\lifen\\lifen\\lifen.csproj",
+  "projectFilePath": "C:\\Users\\e.yumagulov\\Desktop\\системы\\lifen\\lifen\\lifen.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\e.yumagulov\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.2\\microsoft.data.sqlite.core.6.0.2.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\microsoft.net.native.compiler\\2.2.10-rel-29722-00\\microsoft.net.native.compiler.2.2.10-rel-29722-00.nupkg.sha512",
