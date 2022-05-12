@@ -85,6 +85,9 @@
     <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\bin\x64\Debug\pages\Diary.xbf">
+      <PackagePath>pages\Diary.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\bin\x64\Debug\pages\Lists.xbf">
       <PackagePath>pages\Lists.xbf</PackagePath>
     </AppxPackagedFile>

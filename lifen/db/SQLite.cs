@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -317,6 +318,139 @@ namespace lifen
             return tasks;
         }
 
+
+        // получение множества значений из одного столбца выбранной таблице, строки которых удовлетворяют условию равенства
+        public static List<string> get_one_column(string table, string column, Tuple<string, string> condition)
+        {
+            List<string> children = new List<string>();
+
+            string mes = $"при попытке получить данные из базы данных";
+
+            if (check_access(mes))
+            {
+                using (SqliteConnection db = new SqliteConnection($"Filename={path}"))
+                {
+                    db.Open();
+
+                    string sql = $"SELECT {column} FROM {table} WHERE {condition.Item1} = '{condition.Item2}'";
+
+                    SqliteCommand command = new SqliteCommand(sql, db);
+
+                    try
+                    {
+                        SqliteDataReader reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                            children.Add(reader.GetString(0));
+                    }
+                    catch (Exception ex)
+                    {
+                        string message = $"{mes} база данных вернула следующую ошибку: {ex.Message}";
+                    }
+                    finally
+                    {
+                        db.Close();
+                    }
+                }
+            }
+
+            return children;
+        }
+
+        // повторение предыдущего метода, но возвращается таблица с названиями полей
+        public static DataTable get_unic_row_with_condition_1(string table, Tuple<string, string> condition)
+        {
+            DataTable data = new DataTable();
+
+            string mes = $"при попытке получить данные из базы данных";
+
+            if (check_access(mes))
+            {
+                using (SqliteConnection db = new SqliteConnection($"Filename={path}"))
+                {
+                    db.Open();
+
+                    string sql = $"SELECT * FROM {table} WHERE {condition.Item1} = '{condition.Item2}'";
+
+                    SqliteCommand command = new SqliteCommand(sql, db);
+
+                    try
+                    {
+                        SqliteDataReader reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            int fields = reader.FieldCount;
+
+                            data = Tools.createDataTble(1, fields);
+
+                            //row = new string[fields];
+
+                            for (int i = 0; i < fields; i++)
+                            {
+                                if (!reader.IsDBNull(i))
+                                    data.Rows[0][i] = reader.GetString(i);
+
+                                data.Columns[i].ColumnName = reader.GetName(i);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        string message = $"{mes} база данных вернула следующую ошибку: {ex.Message}";
+                    }
+                    finally
+                    {
+                        db.Close();
+                    }
+                }
+            }
+
+            return data;
+        }
+
+        public static List<string> contains (string table, string column, string where, string equals)   // шаблон
+        {
+            List<string> data = new List<string>();
+
+            string mes = $"при попытке обновить данные в базе данных";
+
+            if (check_access(mes))
+            {
+                using (SqliteConnection db = new SqliteConnection($"Filename={path}"))
+                {
+                    db.Open();
+
+                    SqliteCommand command = new SqliteCommand();
+
+                    command.Connection = db;
+
+                    //string correspondence = field_value_string_for_update_row(values);
+                    //string sql = $"UPDATE {table} SET {correspondence} WHERE ... '";
+                    string sql = $"SELECT {column} FROM {table} WHERE {where} LIKE '%{equals}%'";
+
+                    command.CommandText = sql;
+
+                    try
+                    {
+                        SqliteDataReader reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                            data.Add(reader.GetString(0));
+                    }
+                    catch (Exception ex)
+                    {
+                        string message = $"{mes} база данных вернула следующую ошибку: {ex.Message}";
+                    }
+                    finally
+                    {
+                        db.Close();
+                    }
+                }
+            }
+
+            return data;
+        }
 
 
         public static void update(string table, Dictionary<string, string> values, Dictionary<string, string> where)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,19 @@ namespace lifen
         public static string bool_to_1_or_0(bool b)
         {
             return Convert.ToInt32(b).ToString();
+        }
+
+        public static DataTable createDataTble(int r, int c)
+        {
+            DataTable dt = new DataTable();
+
+            for (int i = 0; i < c; i++)
+                dt.Columns.Add();
+
+            for (int i = 0; i < r; i++)
+                dt.Rows.Add();
+
+            return dt;
         }
 
     }

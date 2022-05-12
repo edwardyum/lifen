@@ -171,9 +171,11 @@ namespace lifen
 
             SQLite.update(Tables.tasks, value, where);
 
-            if(subtasks!=null)
-                foreach (Objective task in subtasks)
-                    task.set_done(haveDone);
+            // пока отказываюсь от установления выполненными всех входящих подзадач
+            ///////////////////////////////////////////////////////////////////////
+            //if(subtasks!=null)
+            //    foreach (Objective task in subtasks)
+            //        task.set_done(haveDone);
         }
 
         public void set_name()

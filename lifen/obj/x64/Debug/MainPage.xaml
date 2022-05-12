@@ -11,7 +11,8 @@
 
     <NavigationView x:ConnectionId='2' HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"                                                                                            >
         <NavigationView.MenuItems>
-            <NavigationViewItem Content="BlankPage1" Tag="BlankPage1"/>
+            <NavigationViewItem Content="задачи" Tag="BlankPage1"/>
+            <NavigationViewItem Content="календарь" Tag="Diary"/>
         </NavigationView.MenuItems>
 
         <Frame x:ConnectionId='3' x:Name="contentFrame" />

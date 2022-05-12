@@ -1,0 +1,47 @@
+﻿<Page
+    x:Class="lifen.Diary"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:lifen"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <local:DiaryViewModel/>
+    </Page.DataContext>
+
+    <GridView ItemsSource="{Binding days}" >
+        <GridView.ItemTemplate>
+            <DataTemplate>
+                <RelativePanel Width="200" Height="100">
+                    <!--<Image Source="{Binding image}" Stretch="UniformToFill"/>-->
+                    <TextBlock x:Name="lable" Text="{Binding Date}"/>
+
+                    <StackPanel RelativePanel.Below="lable">
+                        <ItemsControl ItemsSource="{Binding done}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Vertical"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+
+                </RelativePanel>
+            </DataTemplate>
+        </GridView.ItemTemplate>
+        <GridView.ItemsPanel>
+            <ItemsPanelTemplate>
+                <ItemsWrapGrid Orientation="Vertical" MaximumRowsOrColumns="7" />
+            </ItemsPanelTemplate>
+        </GridView.ItemsPanel>
+    </GridView>
+    
+</Page>
