@@ -179,3 +179,4 @@ C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\obj\x64\Debug\pages\Diar
 C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\obj\x64\Debug\pages\Diary.g.cs
 C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\obj\x64\Debug\pages\Diary.xaml
 C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\obj\x64\Debug\pages\Diary.xbf
+C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\obj\x64\Debug\lifen.csproj.AssemblyReference.cache
