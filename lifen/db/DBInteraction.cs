@@ -15,36 +15,36 @@ namespace lifen
         {
             ObservableCollection<Objective> projects = new ObservableCollection<Objective>();
 
-            string sql = StoredProcedures.get_projects;
+            //string sql = StoredProcedures.get_projects;
 
-            SqlCommand command = new SqlCommand(sql, DBS.connection);
-            command.CommandType = CommandType.StoredProcedure;
+            //SqlCommand command = new SqlCommand(sql, DBS.connection);
+            //command.CommandType = CommandType.StoredProcedure;
 
-            SqlDataReader reader = command.ExecuteReader();
+            //SqlDataReader reader = command.ExecuteReader();
 
-            if (reader.HasRows)
-            {
-                while (reader.Read())
-                {
-                    string id = Convert.ToString(reader[Tasks.Id]);
+            //if (reader.HasRows)
+            //{
+            //    while (reader.Read())
+            //    {
+            //        string id = Convert.ToString(reader[Tasks.Id]);
 
-                    Objective project = new Objective("1");
-                    project.obtaining_data_from_db = true;
+            //        Objective project = new Objective("1");
+            //        project.obtaining_data_from_db = true;
 
-                    project.Name = Convert.ToString(reader[Tasks.name]);
-                    project.Description = Convert.ToString(reader[Tasks.description]);
+            //        project.Name = Convert.ToString(reader[Tasks.name]);
+            //        project.Description = Convert.ToString(reader[Tasks.description]);
 
-                    object Don = reader[Tasks.done]; if( Don.GetType() != typeof( DBNull)) project.Done = Convert.ToBoolean(Don);
+            //        object Don = reader[Tasks.done]; if( Don.GetType() != typeof( DBNull)) project.Done = Convert.ToBoolean(Don);
 
-                    project.DataCompletion = Convert.ToString(reader[Tasks.completion_date]);
-                    project.DataCreation = Convert.ToString(reader[Tasks.creation_date]);
+            //        project.DataCompletion = Convert.ToString(reader[Tasks.completion_date]);
+            //        project.DataCreation = Convert.ToString(reader[Tasks.creation_date]);
 
-                    project.obtaining_data_from_db = false;
-                    projects.Add(project);
-                }
-            }
+            //        project.obtaining_data_from_db = false;
+            //        projects.Add(project);
+            //    }
+            //}
 
-            reader.Close();
+            //reader.Close();
             return projects;
         }
 
@@ -71,21 +71,21 @@ namespace lifen
             {
                 while (reader.Read())
                 {
-                    string id = Convert.ToString(reader[Tasks.Id]);
+                    //string id = Convert.ToString(reader[Tasks.Id]);
 
-                    Objective objective = new Objective(idt);
-                    objective.obtaining_data_from_db = true;
+                    //Objective objective = new Objective(idt);
+                    //objective.obtaining_data_from_db = true;
 
-                    objective.Name = Convert.ToString(reader[Tasks.name]);
-                    objective.Description = Convert.ToString(reader[Tasks.description]);
+                    //objective.Name = Convert.ToString(reader[Tasks.name]);
+                    //objective.Description = Convert.ToString(reader[Tasks.description]);
 
-                    object Don = reader[Tasks.done]; if (Don.GetType() != typeof(DBNull)) objective.Done = Convert.ToBoolean(Don);
+                    //object Don = reader[Tasks.done]; if (Don.GetType() != typeof(DBNull)) objective.Done = Convert.ToBoolean(Don);
 
-                    objective.DataCompletion = Convert.ToString(reader[Tasks.completion_date]);
-                    objective.DataCreation = Convert.ToString(reader[Tasks.creation_date]);
+                    //objective.DataCompletion = Convert.ToString(reader[Tasks.completion_date]);
+                    //objective.DataCreation = Convert.ToString(reader[Tasks.creation_date]);
 
-                    objective.obtaining_data_from_db = false;
-                    tasks.Add(objective);
+                    //objective.obtaining_data_from_db = false;
+                    //tasks.Add(objective);
                 }
             }
             

@@ -24,6 +24,42 @@ namespace lifen
             return Convert.ToInt32(b).ToString();
         }
 
+        public static bool string_to_bool(string s)
+        {
+            bool b = false;
+
+            if (!string.IsNullOrWhiteSpace(s))
+            {
+                switch (s)
+                {
+                    case "true":
+                        b = true; break;
+                    case "True":
+                        b = true; break;
+                    case "TRUE":
+                        b = true; break;
+
+                    case "false":
+                        b = false; break;
+                    case "False":
+                        b = false; break;
+                    case "FALSE":
+                        b = false; break;
+
+                    case "1":
+                        b = true; break;
+                    case "0":
+                        b = false; break;
+                }
+            }
+            else
+            {
+                string message = "на вход в метод пришло пустое значение";
+            }
+
+            return b;
+        }
+
         public static DataTable createDataTble(int r, int c)
         {
             DataTable dt = new DataTable();

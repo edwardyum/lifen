@@ -10,7 +10,12 @@ namespace lifen
     internal static class Manager
     {
         public static Objective root { get; set; }
-        public static Objective today { get; set; } 
+        public static Objective today { get; set; }
+
+        
+
+
+
         public static List<string> tasks_for_today;
 
         public static event Refresh refresh;
@@ -43,29 +48,29 @@ namespace lifen
 
         public static void execute()
         {
-            form();
-            set_today_tasks();
+            //form();
+            //set_today_tasks();
 
-            refresh?.Invoke();
+            //refresh?.Invoke();
         }
 
         private static void form()
         {
-            root = null;
-            root = new Objective("1");
+            //root = null;
+            //root = new Objective("1");
 
-            root.form();
+            //root.form();
         }
 
-        private static void set_today_tasks()
-        {
-            tasks_for_today = SQLite.get_tasks_for_today();
-            root.check_for_today();
-            root.check_for_today_back();
+        //private static void set_today_tasks()
+        //{
+        //    tasks_for_today = SQLite.get_tasks_for_today();
+        //    root.check_for_today();
+        //    root.check_for_today_back();
 
-            today = new Objective("1");
-            root.create_today_only_structure_2(today);
-        }
+        //    today = new Objective("1");
+        //    root.create_today_only_structure_2(today);
+        //}
 
     }
 }

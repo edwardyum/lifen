@@ -25,9 +25,7 @@ namespace lifen
         public MainPage()
         {
             this.InitializeComponent();
-
             Manager.initialize();
-            Manager.execute();
         }
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)

@@ -12,6 +12,8 @@ namespace lifen
 {
     internal class ListsViewModel : DependencyObject
     {
+        public static bool forming = false;
+
         public Objective root
         {
             get { return (Objective)GetValue(rootProperty); }
@@ -33,11 +35,15 @@ namespace lifen
 
         public ListsViewModel()
         {
-            if (!Manager.event_contains_method(typeof(ListsViewModel)))
-                Manager.refresh += refresh_data;
+            root = new Objective("1", null);  // корневой узел
+            today = new Objective("1", null);
+            //root.form();
 
-            root = Manager.root;
-            today = Manager.today;
+            //if (!Manager.event_contains_method(typeof(ListsViewModel)))
+            //    Manager.refresh += refresh_data;
+
+            //root = Manager.root;
+            //today = Manager.today;
         }
 
         private void refresh_data()

@@ -232,55 +232,55 @@ namespace lifen
             return subtasks_id;
         }
 
-        public static ObservableCollection<Objective> get_subtasks(string id)   // получить данные из базы данных
-        {
-            ObservableCollection<Objective> tasks = new ObservableCollection<Objective>();
+        //public static ObservableCollection<Objective> get_subtasks(string id)   // получить данные из базы данных
+        //{
+        //    ObservableCollection<Objective> tasks = new ObservableCollection<Objective>();
 
-            string mes = "при попытке получить данные из базы данных";
+        //    string mes = "при попытке получить данные из базы данных";
 
-            if (check_access(mes))
-            {
-                using (SqliteConnection db = new SqliteConnection($"Filename={path}"))
-                {
-                    db.Open();
+        //    if (check_access(mes))
+        //    {
+        //        using (SqliteConnection db = new SqliteConnection($"Filename={path}"))
+        //        {
+        //            db.Open();
 
-                    string sql = $"SELECT * FROM {Tables.tasks}, {Tables.hierarchy} WHERE {Tables.hierarchy}.{Hierachy.parent} = {id} " +
-                    $"AND {Tables.tasks}.{Tasks.Id}={Tables.hierarchy}.{Hierachy.child}";
+        //            string sql = $"SELECT * FROM {Tables.tasks}, {Tables.hierarchy} WHERE {Tables.hierarchy}.{Hierachy.parent} = {id} " +
+        //            $"AND {Tables.tasks}.{Tasks.Id}={Tables.hierarchy}.{Hierachy.child}";
 
-                    SqliteCommand command = new SqliteCommand(sql, db);
+        //            SqliteCommand command = new SqliteCommand(sql, db);
 
-                    try
-                    {
-                        SqliteDataReader reader = command.ExecuteReader();
+        //            try
+        //            {
+        //                SqliteDataReader reader = command.ExecuteReader();
 
-                        while (reader.Read())
-                        {
-                            int c = 0;
+        //                while (reader.Read())
+        //                {
+        //                    int c = 0;
 
-                            Objective task = new Objective(reader.GetString(0));
-                            task.obtaining_data_from_db = true;
+        //                    Objective task = new Objective(reader.GetString(0));
+        //                    //task.obtaining_data_from_db = true;
 
-                            c = reader.GetOrdinal(Tasks.creation_date); task.DataCreation = reader.GetString(c);
-                            c = reader.GetOrdinal(Tasks.name); task.Name = reader.GetString(c);
-                            c = reader.GetOrdinal(Tasks.description); if (!reader.IsDBNull(c)) task.Description = reader.GetString(c);
-                            c = reader.GetOrdinal(Tasks.done); if (!reader.IsDBNull(c)) task.Done = reader.GetBoolean(c);
-                            c = reader.GetOrdinal(Tasks.completion_date); if (!reader.IsDBNull(c)) task.DataCompletion = reader.GetString(c);
+        //                    c = reader.GetOrdinal(Tasks.creation_date); task.DataCreation = reader.GetString(c);
+        //                    c = reader.GetOrdinal(Tasks.name); task.Name = reader.GetString(c);
+        //                    c = reader.GetOrdinal(Tasks.description); if (!reader.IsDBNull(c)) task.Description = reader.GetString(c);
+        //                    c = reader.GetOrdinal(Tasks.done); if (!reader.IsDBNull(c)) task.Done = reader.GetBoolean(c);
+        //                    c = reader.GetOrdinal(Tasks.completion_date); if (!reader.IsDBNull(c)) task.DataCompletion = reader.GetString(c);
 
-                            task.obtaining_data_from_db = false;
-                            tasks.Add(task);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        string message = $"{mes} база данных вернула следующую ошибку: {ex.Message}";
-                    }
+        //                    //task.obtaining_data_from_db = false;
+        //                    tasks.Add(task);
+        //                }
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                string message = $"{mes} база данных вернула следующую ошибку: {ex.Message}";
+        //            }
 
-                    db.Close();
-                }
-            }
+        //            db.Close();
+        //        }
+        //    }
 
-            return tasks;
-        }
+        //    return tasks;
+        //}
 
 
         public static List<string> get_tasks_for_today()
@@ -320,7 +320,7 @@ namespace lifen
 
 
         // получение множества значений из одного столбца выбранной таблице, строки которых удовлетворяют условию равенства
-        public static List<string> get_one_column(string table, string column, Tuple<string, string> condition)
+        public static List<string> get_one_column(string table, string column, string where, string condition)
         {
             List<string> children = new List<string>();
 
@@ -332,7 +332,7 @@ namespace lifen
                 {
                     db.Open();
 
-                    string sql = $"SELECT {column} FROM {table} WHERE {condition.Item1} = '{condition.Item2}'";
+                    string sql = $"SELECT {column} FROM {table} WHERE {where} = '{condition}'";
 
                     SqliteCommand command = new SqliteCommand(sql, db);
 
@@ -358,7 +358,7 @@ namespace lifen
         }
 
         // повторение предыдущего метода, но возвращается таблица с названиями полей
-        public static DataTable get_unic_row_with_condition_1(string table, Tuple<string, string> condition)
+        public static DataTable get_unic_row_with_condition_1(string table, string where, string condition)
         {
             DataTable data = new DataTable();
 
@@ -370,7 +370,7 @@ namespace lifen
                 {
                     db.Open();
 
-                    string sql = $"SELECT * FROM {table} WHERE {condition.Item1} = '{condition.Item2}'";
+                    string sql = $"SELECT * FROM {table} WHERE {where} = '{condition}'";
 
                     SqliteCommand command = new SqliteCommand(sql, db);
 

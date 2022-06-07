@@ -26,5 +26,15 @@ namespace lifen
         {
             this.InitializeComponent();
         }
+
+        private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuFlyoutItem_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
     }
 }
