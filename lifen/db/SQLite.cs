@@ -320,7 +320,7 @@ namespace lifen
 
 
         // получение множества значений из одного столбца выбранной таблице, строки которых удовлетворяют условию равенства
-        public static List<string> get_one_column(string table, string column, string where, string condition)
+        public static List<string> get_column(string table, string column, string where, string condition)
         {
             List<string> children = new List<string>();
 
@@ -407,6 +407,49 @@ namespace lifen
             }
 
             return data;
+        }
+
+        // метод возвращает уникальную ячейку расположенную в строке определяемую условием, в колонке определяемую условием
+        // однако строк для условия может быть несколько поэтому сделать метод, выводящий все подпадающие под условие ячейки
+
+        // данный метод работает для случая когда заранее известно, что строка уникальна. возможно, это ключевое поле, либо же по какой-то другой причине
+        public static string get_unic_cell_with_condition(string table, string column, string where, string condition)
+        {
+            List<string> cells = new();
+
+            string mes = $"при попытке получить данные из базы данных";
+
+            if (check_access(mes))
+            {
+                using (SqliteConnection db = new SqliteConnection($"Filename={path}"))
+                {
+                    db.Open();
+
+                    string sql = $"SELECT {column} FROM {table} WHERE {where} = '{condition}'";
+
+                    SqliteCommand command = new SqliteCommand(sql, db);
+
+                    try
+                    {
+                        SqliteDataReader reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            cells.Add(reader.GetString(0));
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        string message = $"{mes} база данных вернула следующую ошибку: {ex.Message}";
+                    }
+                    finally
+                    {
+                        db.Close();
+                    }
+                }
+            }
+
+            return cells[0];
         }
 
         public static List<string> contains (string table, string column, string where, string equals)   // шаблон
@@ -510,7 +553,7 @@ namespace lifen
             return s;
         }
 
-        public static void delete(string table, string field, string value)   // удаление строки из таблицы
+        public static void delete(string table, string where, string condition)   // удаление строки из таблицы
         {
             string mes = "при попытке обновить данные в базе данных";
 
@@ -524,7 +567,7 @@ namespace lifen
 
                     command.Connection = db;
 
-                    string sql = $"DELETE FROM {table} WHERE {field} = '{value}'";
+                    string sql = $"DELETE FROM {table} WHERE {where} = '{condition}'";
 
                     command.CommandText = sql;
 
@@ -542,7 +585,7 @@ namespace lifen
             }
         }
 
-        public static void delete_task_from_today(string id)   // удаление задачи из списка на сегодня
+        public static void delete(string table, Dictionary<string, string> where)   // удаление строки из таблицы с несколькими условиями
         {
             string mes = "при попытке обновить данные в базе данных";
 
@@ -556,7 +599,8 @@ namespace lifen
 
                     command.Connection = db;
 
-                    string sql = $"DELETE FROM {Tables.planner} WHERE {Planner.task} = '{id}' AND {Planner.date} = '{Time.now_date()}'";
+                    string cons = conditions(where);
+                    string sql = $"DELETE FROM {table} WHERE '{cons}'";
 
                     command.CommandText = sql;
 
@@ -573,6 +617,52 @@ namespace lifen
                 }
             }
         }
+
+        private static string conditions(Dictionary<string, string> where)
+        {
+            string s = string.Empty;
+
+            foreach (KeyValuePair<string, string> con in where)
+                s += $"{con.Key} = '{con.Value}' AND ";
+
+            s = Tools.deleteLastWord(s, " AND ");
+
+            return s;
+        }
+
+
+
+        //public static void delete_task_from_today(string id)   // удаление задачи из списка на сегодня
+        //{
+        //    string mes = "при попытке обновить данные в базе данных";
+
+        //    if (check_access(mes))
+        //    {
+        //        using (SqliteConnection db = new SqliteConnection($"Filename={path}"))
+        //        {
+        //            db.Open();
+
+        //            SqliteCommand command = new SqliteCommand();
+
+        //            command.Connection = db;
+
+        //            string sql = $"DELETE FROM {Tables.planner} WHERE {Planner.task} = '{id}' AND {Planner.date} = '{Time.now_date()}'";
+
+        //            command.CommandText = sql;
+
+        //            try
+        //            {
+        //                command.ExecuteNonQuery();
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                string message = $"{mes} база данных вернула следующую ошибку: {ex.Message}";
+        //            }
+
+        //            db.Close();
+        //        }
+        //    }
+        //}
 
 
     }

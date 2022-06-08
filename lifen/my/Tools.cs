@@ -73,5 +73,13 @@ namespace lifen
             return dt;
         }
 
+        public static string deleteLastWord(string s, string last)
+        {
+            char[] chars = last.ToCharArray();
+            s = s.TrimEnd(chars);
+
+            return s;
+        }
+
     }
 }

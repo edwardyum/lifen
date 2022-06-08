@@ -55,8 +55,8 @@ namespace lifen
 
         private static string read(string table, string column, string where, string condition)
         {
-            //string value = SQLite.get_unic_cell_with_condition(table, column, where, condition);
-            return "заглушка";
+            string value = SQLite.get_unic_cell_with_condition(table, column, where, condition);
+            return value;
         }
 
 

@@ -14,48 +14,47 @@ namespace lifen
     {
         public static bool forming = false;
 
-        public Objective root
-        {
-            get { return (Objective)GetValue(rootProperty); }
-            set { SetValue(rootProperty, value); }
-        }
-        // Using a DependencyProperty as the backing store for root.  This enables animation, styling, binding, etc...
+        public Objective root { get { return (Objective)GetValue(rootProperty); } set { SetValue(rootProperty, value); } }
         public static readonly DependencyProperty rootProperty = DependencyProperty.Register("root", typeof(Objective), typeof(ListsViewModel), new PropertyMetadata(null));
 
-
-        public Objective today
-        {
-            get { return (Objective)GetValue(todayProperty); }
-            set { SetValue(todayProperty, value); }
-        }
-        // Using a DependencyProperty as the backing store for today.  This enables animation, styling, binding, etc...
+        public Objective today { get { return (Objective)GetValue(todayProperty); } set { SetValue(todayProperty, value); } }
         public static readonly DependencyProperty todayProperty = DependencyProperty.Register("today", typeof(Objective), typeof(ListsViewModel), new PropertyMetadata(null));
 
-
+        public static List<string> todayTasks;
 
         public ListsViewModel()
         {
             root = new Objective("1", null);  // корневой узел
-            today = new Objective("1", null);
-            //root.form();
 
-            //if (!Manager.event_contains_method(typeof(ListsViewModel)))
-            //    Manager.refresh += refresh_data;
-
-            //root = Manager.root;
-            //today = Manager.today;
+            checkToday();
+            today = new Objective(root.Id, root.Name, root.Description, root.Done);
+            root.create_today_only_structure_2(today);
         }
 
-        private void refresh_data()
+        private void checkToday()
         {
-            root = null;
-            root = Manager.root;
+            todayTasks = SQLite.get_column(Tables.planner, Planner.task, Planner.date, Time.now_date());
 
-            today = null;
-            today = Manager.today;
-
-
+            root.check_for_today();
+            root.check_for_today_back();
         }
+
+        //private List<string> getTodayTasks()
+        //{
+        //    return SQLite.get_column(Tables.planner, Planner.task, Planner.date, Time.now_date());
+        //}
+
+
+        //private void refresh_data()
+        //{
+        //    root = null;
+        //    root = Manager.root;
+
+        //    today = null;
+        //    today = Manager.today;
+
+
+        //}
 
 
     }

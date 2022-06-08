@@ -26,15 +26,15 @@ namespace lifen
         private string data_completion = string.Empty;
 
         public bool added_for_today { get; set; } = false;
+        //public bool Added_for_today { get { return added_for_today; } set { UpdateProperties.set(this, nameof(added_for_today), value, Tables.planner, Planner.Id, id, column); } }
 
         //
-        bool obtaining_data_from_db = false;
         public string Id { get { return id; } }
-        public string DataCreation { get { return data_creation; } set { data_creation = value; } }
-        public string Name { get { return name; } set { name = value; if (!obtaining_data_from_db) { set_name(); } } }
-        public string Description { get { return description; } set { description = value; if (!obtaining_data_from_db) { set_description(); } } }
-        public bool Done { get { return done; } set { done = value; if (!obtaining_data_from_db) { set_done(value); } } }
-        public string DataCompletion { get { return data_completion; } set { data_completion = value; } }
+        public string DataCreation { get { return data_creation; } set { setup(nameof(data_creation), value, Tasks.creation_date); } }
+        public string Name { get { return name; } set { setup(nameof(name), value); } }
+        public string Description { get { return description; } set { setup(nameof(description), value); } }
+        public bool Done { get { return done; } set { setup(nameof(done), value); DataCompletion = Time.now(); } }
+        public string DataCompletion { get { return data_completion; } set { setup(nameof(data_completion), value, Tasks.completion_date); } }
 
 
         
@@ -42,7 +42,7 @@ namespace lifen
         RefreshSubtasks refreshUp;  // это делега сверху
         public ObservableCollection<Objective> subtasks { get; set; } = new ObservableCollection<Objective>();
 
-        // !!! внимание !!!     зависимые свойства не работают из-за того, что они static. это путает всю логику, а убрать static не получается, в этом случае не отрабатывает внутренний меанизм DependencyObject
+        // !!! внимание !!!     зависимые свойства не работают из-за того, что они static. это путает всю рекурсивную логику , а убрать static не получается, в этом случае не отрабатывает внутренний меанизм DependencyObject
         //public ObservableCollection<Objective> subtasks { get { return (ObservableCollection<Objective>)GetValue(subtasksProperty); } set { SetValue(subtasksProperty, value); } }
         //public static readonly DependencyProperty subtasksProperty = DependencyProperty.Register("subtasks", typeof(ObservableCollection<Objective>), typeof(Objective), new PropertyMetadata(new ObservableCollection<Objective>()));
 
@@ -65,6 +65,7 @@ namespace lifen
         }
 
 
+        // для today
         public Objective(string Id, string name_, string description_, bool done_)
         {
             id = Id;
@@ -85,6 +86,12 @@ namespace lifen
             refresh = refreshSubtasks;
         }
 
+
+        private void setup(string field, object value, string column = null)
+        {
+            UpdateProperties.set(this, field, value, Tables.tasks, Tasks.Id, id, column);
+        }
+
         private void form()
         {
             DataTable data = SQLite.get_unic_row_with_condition_1(Tables.tasks, Tasks.Id, id);
@@ -97,6 +104,10 @@ namespace lifen
             data_completion =   data.Rows[0][Tasks.completion_date].ToString();
 
             refreshSubtasks();
+
+            // функционал по определению назначена ли задача на сегодня выполняется во ViewModel
+            //if (ListsViewModel.todayTasks.Contains(Id))
+            //    added_for_today = true;
         }
 
         private void refreshSubtasks()
@@ -120,7 +131,7 @@ namespace lifen
 
         private List<string> get_subtasks_id()
         {
-            List<string> ids = SQLite.get_one_column(Tables.hierarchy, Hierachy.child, Hierachy.parent, id);
+            List<string> ids = SQLite.get_column(Tables.hierarchy, Hierachy.child, Hierachy.parent, id);
             return ids;
         }
 
@@ -242,7 +253,13 @@ namespace lifen
 
         public void delete_task_from_today()
         {
-            SQLite.delete_task_from_today(id);
+            Dictionary<string, string> where = new();
+            where.Add(Planner.task, id);
+            where.Add(Planner.date, Time.now_date());
+
+            SQLite.delete(Tables.planner, where);
+
+            //SQLite.delete_task_from_today(id);
         }
 
 
@@ -287,12 +304,12 @@ namespace lifen
 
 
 
-
+        //////////////////////////////////////////////////
         // today
 
         public void check_for_today()
         {
-            if (Manager.tasks_for_today.Contains(id))
+            if (ListsViewModel.todayTasks.Contains(id))
                 added_for_today = true;
 
             if (subtasks != null)
@@ -320,13 +337,13 @@ namespace lifen
             return today;
         }
 
-        public void create_today_only_structure()   // копируем корневой узел. удаляем всё, что не добавлено на сегодня
-        {
-            if (subtasks != null)
-                for (int i = subtasks.Count; i >= 0; i--)
-                    if (!subtasks[i].added_for_today) subtasks.RemoveAt(i);
-                    else subtasks[i].create_today_only_structure();                    
-        }
+        //public void create_today_only_structure()   // копируем корневой узел. удаляем всё, что не добавлено на сегодня
+        //{
+        //    if (subtasks != null)
+        //        for (int i = subtasks.Count; i >= 0; i--)
+        //            if (!subtasks[i].added_for_today) subtasks.RemoveAt(i);
+        //            else subtasks[i].create_today_only_structure();                    
+        //}
 
 
         // нет возможности добавить существующие объекты, поскольку они включают и не отмеченные на сегодня. если я удалю неотмеченные в today, они удаляться и в оригинале
