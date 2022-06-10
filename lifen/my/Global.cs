@@ -8,6 +8,8 @@ namespace lifen
 {
     internal static class Global
     {
+        //public static string refreshTodayTotal = "total";
+
         public static string connction_string = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\e.yumagulov\Desktop\системы\lifen\program\1_db\db\db.mdf;Integrated Security=SSPI;Trusted_Connection=True";
         //public static string connction_string = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\e.yumagulov\Desktop\системы\lifen\program\1_db\db\db.mdf;Integrated Security=True,";
 

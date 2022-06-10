@@ -152,6 +152,7 @@
     <Compile Include="db\SQLite.cs" />
     <Compile Include="my\Tools.cs" />
     <Compile Include="program\UpdateProperties.cs" />
+    <Compile Include="program\RefreshType.cs" />
     <Compile Include="uwp\CommandBase.cs" />
   </ItemGroup>
   <ItemGroup>

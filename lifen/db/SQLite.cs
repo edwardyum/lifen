@@ -96,6 +96,93 @@ namespace lifen
             await ApplicationData.Current.LocalFolder.CreateFileAsync(db_name, CreationCollisionOption.OpenIfExists);
         }
 
+
+        public static bool exists(string table, string column, string value)   // существует ли ячейка в колонке в таблице
+        {
+            bool existance = false;
+
+            string mes = $"при попытке обновить данные в базе данных";
+
+            if (check_access(mes))
+            {
+                using (SqliteConnection db = new SqliteConnection($"Filename={path}"))
+                {
+                    db.Open();
+
+                    SqliteCommand command = new SqliteCommand();
+
+                    command.Connection = db;
+
+                    string sql = $"SELECT EXISTS(SELECT {column} FROM {table} WHERE {column} = '{value}')";
+
+                    command.CommandText = sql;
+
+                    try
+                    {
+                        SqliteDataReader reader = command.ExecuteReader();
+                        reader.Read();
+                        existance = reader.GetBoolean(0);
+                    }
+                    catch (Exception ex)
+                    {
+                        string message = $"{mes} база данных вернула следующую ошибку: {ex.Message}";
+                    }
+                    finally
+                    {
+                        db.Close();
+                    }
+                }
+            }
+
+            return existance;
+        }
+
+
+        // может заменить метода, на возвращающий количество найденных записей. это расширит функционал, хотя зачем?
+        // может сделать перегрузку с простым случаем
+        // тогда для двух перегрузок можно сделать одну базу
+        public static bool exists(string table,string column, Dictionary<string, string> where)   // существует ли ячейка в колонке в таблице с условиями
+        {
+            bool existance = false;
+
+            string mes = $"при попытке обновить данные в базе данных";
+
+            if (check_access(mes))
+            {
+                using (SqliteConnection db = new SqliteConnection($"Filename={path}"))
+                {
+                    db.Open();
+
+                    SqliteCommand command = new SqliteCommand();
+
+                    command.Connection = db;
+
+                    string cons = conditions(where);
+                    string sql = $"SELECT EXISTS(SELECT {column} FROM {table} WHERE {cons})";
+
+                    command.CommandText = sql;
+
+                    try
+                    {
+                        SqliteDataReader reader = command.ExecuteReader();
+                        reader.Read();
+                        existance = reader.GetBoolean(0);
+                    }
+                    catch (Exception ex)
+                    {
+                        string message = $"{mes} база данных вернула следующую ошибку: {ex.Message}";
+                    }
+                    finally
+                    {
+                        db.Close();
+                    }
+                }
+            }
+
+            return existance;
+        }
+
+
         // не проработано
         public static void create_table()
         {
@@ -600,7 +687,7 @@ namespace lifen
                     command.Connection = db;
 
                     string cons = conditions(where);
-                    string sql = $"DELETE FROM {table} WHERE '{cons}'";
+                    string sql = $"DELETE FROM {table} WHERE {cons}";
 
                     command.CommandText = sql;
 

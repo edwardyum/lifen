@@ -21,12 +21,12 @@ namespace lifen
         //
         private string name = string.Empty;
         private string description = string.Empty;
-        private bool   done = false;
+        private bool done = false;
         private string data_creation = string.Empty;
         private string data_completion = string.Empty;
 
-        public bool added_for_today { get; set; } = false;
-        //public bool Added_for_today { get { return added_for_today; } set { UpdateProperties.set(this, nameof(added_for_today), value, Tables.planner, Planner.Id, id, column); } }
+        private bool added_for_today = false;
+        public bool Added_for_today { get { return added_for_today; } set { if (value) add_task_for_today(); else delete_task_from_today(); } }
 
         //
         public string Id { get { return id; } }
@@ -37,9 +37,10 @@ namespace lifen
         public string DataCompletion { get { return data_completion; } set { setup(nameof(data_completion), value, Tasks.completion_date); } }
 
 
-        
-        RefreshSubtasks refresh;    // это делагет этого уровня
-        RefreshSubtasks refreshUp;  // это делега сверху
+
+        RefreshSubtasks refresh;    // делагет этого уровня
+        RefreshSubtasks refreshUp;  // делегат сверху
+        RefreshToday refreshToday;  // обновление задач на сегодня
         public ObservableCollection<Objective> subtasks { get; set; } = new ObservableCollection<Objective>();
 
         // !!! внимание !!!     зависимые свойства не работают из-за того, что они static. это путает всю рекурсивную логику , а убрать static не получается, в этом случае не отрабатывает внутренний меанизм DependencyObject
@@ -49,16 +50,17 @@ namespace lifen
 
 
         //
-        private CommandBase add_task_command_;                 public ICommand add_task_command => add_task_command_;
-        private CommandBase delete_task_command_;              public ICommand delete_task_command => delete_task_command_;
-        private CommandBase add_task_for_today_command_;       public ICommand add_task_for_today_command => add_task_for_today_command_;
-        private CommandBase delete_task_from_today_command_;   public ICommand delete_task_from_today_command => delete_task_from_today_command_;
+        private CommandBase add_task_command_; public ICommand add_task_command => add_task_command_;
+        private CommandBase delete_task_command_; public ICommand delete_task_command => delete_task_command_;
+        //private CommandBase add_task_for_today_command_;       public ICommand add_task_for_today_command => add_task_for_today_command_;
+        //private CommandBase delete_task_from_today_command_;   public ICommand delete_task_from_today_command => delete_task_from_today_command_;
 
-
-        public Objective(string Id, RefreshSubtasks refreshSubtasks)
+        // для root
+        public Objective(string Id, RefreshSubtasks refreshSubtasks, RefreshToday refreshToday)
         {
             id = Id;
             refreshUp = refreshSubtasks;
+            this.refreshToday = refreshToday;
 
             initialize();
             form();
@@ -66,22 +68,19 @@ namespace lifen
 
 
         // для today
-        public Objective(string Id, string name_, string description_, bool done_)
+        public Objective(string Id_, RefreshToday refreshToday)
         {
-            id = Id;
-            name = name_;
-            description = description_;
-            done = done_;
-
-            initialize();
+            id = Id_;
+            this.refreshToday = refreshToday;
+            formBase();
         }
 
         private void initialize()
         {
             add_task_command_ = new CommandBase(add_task);
             delete_task_command_ = new CommandBase(delete_task);
-            add_task_for_today_command_ = new CommandBase(add_task_for_today);
-            delete_task_from_today_command_ = new CommandBase(delete_task_from_today);
+            //add_task_for_today_command_ = new CommandBase(add_task_for_today);
+            //delete_task_from_today_command_ = new CommandBase(delete_task_from_today);
 
             refresh = refreshSubtasks;
         }
@@ -92,22 +91,43 @@ namespace lifen
             UpdateProperties.set(this, field, value, Tables.tasks, Tasks.Id, id, column);
         }
 
+        //private void setupForToday(bool value)
+        //{
+        //    switch (value)
+        //    {
+        //        case true:
+        //            add_task_for_today(); break;
+
+        //        case false:
+        //            delete_task_from_today(); break;
+        //    }
+        //}
+
         private void form()
         {
-            DataTable data = SQLite.get_unic_row_with_condition_1(Tables.tasks, Tasks.Id, id);
-
-            // id - уже есть
-            data_creation =     data.Rows[0][Tasks.creation_date].ToString();
-            name =              data.Rows[0][Tasks.name].ToString();
-            description =       data.Rows[0][Tasks.description].ToString();
-            done = Tools.string_to_bool(data.Rows[0][Tasks.done].ToString());
-            data_completion =   data.Rows[0][Tasks.completion_date].ToString();
-
-            refreshSubtasks();
+            formBase();
+            refreshSubtasks();            
 
             // функционал по определению назначена ли задача на сегодня выполняется во ViewModel
             //if (ListsViewModel.todayTasks.Contains(Id))
             //    added_for_today = true;
+        }
+
+
+
+        private void formBase()
+        {
+            DataTable data = SQLite.get_unic_row_with_condition_1(Tables.tasks, Tasks.Id, id);
+
+            // id - уже есть
+            data_creation = data.Rows[0][Tasks.creation_date].ToString();
+            name = data.Rows[0][Tasks.name].ToString();
+            description = data.Rows[0][Tasks.description].ToString();
+            done = Tools.string_to_bool(data.Rows[0][Tasks.done].ToString());
+            data_completion = data.Rows[0][Tasks.completion_date].ToString();
+
+            if (todayExists())
+                added_for_today = true;
         }
 
         private void refreshSubtasks()
@@ -123,9 +143,9 @@ namespace lifen
             List<Objective> superfluous = superfluousSubtasks(subId);
 
             foreach (string sid in missing)
-                subtasks.Add(new Objective(sid, refresh));
+                subtasks.Add(new Objective(sid, refresh, refreshToday));
 
-            foreach(var subtask in superfluous)
+            foreach (var subtask in superfluous)
                 subtasks.Remove(subtask);
         }
 
@@ -151,7 +171,7 @@ namespace lifen
                     }
                 }
 
-                if(!exist)
+                if (!exist)
                     missing.Add(sid);
             }
             return missing;
@@ -170,7 +190,7 @@ namespace lifen
                     {
                         exists = true;
                         break;
-                    }                        
+                    }
                 }
 
                 if (!exists)
@@ -217,17 +237,35 @@ namespace lifen
             refreshSubtasks();
         }
 
+        private bool todayExists()
+        {
+            Dictionary<string, string> whereE = new();
+            whereE.Add(Planner.task, id);
+            whereE.Add(Planner.date, Time.now_date());
+
+            bool exists = SQLite.exists(Tables.planner, Planner.task, whereE);
+
+            return exists;
+        }
+
         public void add_task_for_today()
         {
-            Dictionary<string, string> value = new Dictionary<string, string>();
-            value.Add(Planner.date, Time.now_date());
-            value.Add(Planner.task, id);
-
-            string row = SQLite.add(Tables.planner, value);
-
-            if (string.IsNullOrWhiteSpace(row))
+            if (!todayExists()) // проверка добавлена ли уже задача на сегодня
             {
-                string message = $"не удалось добавить новую строку для новой задачи на сегодня в таблицу {Tables.planner}";
+                Dictionary<string, string> value = new Dictionary<string, string>();
+                value.Add(Planner.date, Time.now_date());
+                value.Add(Planner.task, id);
+
+                string row = SQLite.add(Tables.planner, value);
+
+                if (string.IsNullOrWhiteSpace(row))
+                {
+                    string message = $"не удалось добавить новую строку для новой задачи на сегодня в таблицу {Tables.planner}";
+                }
+                else
+                {
+                    refreshToday(id);
+                }
             }
         }
 
@@ -242,7 +280,7 @@ namespace lifen
             SQLite.delete(Tables.hierarchy, Hierachy.child, id);
             // удачная находнка - инкапсуляция. удаляем не по ссылке на родителя или какие-то другие объекты,
             // а все строки, в которые входит текущая задача. и убирается необходимость в поле id родителя.
-            
+
             delete_task_from_today();   // лучше вызвать методв в классе Objective, чем в SQLite. более универсально.
 
             refreshSubtasks();
@@ -259,11 +297,14 @@ namespace lifen
 
             SQLite.delete(Tables.planner, where);
 
+
+            refreshToday(Id, RefreshType.Delete);
+
             //SQLite.delete_task_from_today(id);
         }
 
 
-        
+
 
         public void set_description()
         {
@@ -353,11 +394,141 @@ namespace lifen
                 foreach (Objective task in subtasks)
                     if (task.added_for_today)
                     {
-                        Objective subtask = new Objective(task.id, task.name, task.description, task.done);
-                        objective.subtasks.Add(subtask);
-                        task.create_today_only_structure_2(subtask);
+                        //Objective subtask = new Objective(task.id, task.name, task.description, task.done);
+                        //objective.subtasks.Add(subtask);
+                        //task.create_today_only_structure_2(subtask);
                     }
         }
 
+
+        // new approach
+        //public void wolkAlongBranch(List<string> ids, int level)
+        //{
+        //    level++;
+        //    added_for_today = true;
+
+        //    if (level != ids.Count - 1) // если это не последний уровень, добавляем подзадачу
+        //    {
+        //        string subtaskId = ids[level + 1];
+
+        //        if (!subtasksContain(subtaskId))
+        //            subtasks.Add(new Objective(subtaskId, refreshToday));
+
+        //        var subtask = getSubtaskById(subtaskId);
+        //        subtask.wolkAlongBranch(ids, level);
+        //    }
+        //}
+
+
+        //public enum ThereAndBack
+        //{
+        //    There,
+        //    Back
+        //}
+
+        //public static ThereAndBack thereBack = ThereAndBack.There;
+
+        //public static bool thereAndBack = true;    // true - ход в глубину рекурсии, false - обратный ход
+        public static bool deletion = true;
+
+        public void wolkAlongBranchThereAndBack(List<string> ids, int level, RefreshType refreshType)
+        {
+            // идём туда и обратно по ветке
+            // если задача установить новую задачу на сегодня,
+            //      то по пути туда добавляем все необходимые узлы, если они ещё не добавлены
+            //      по пути обратно ничего не делаем
+            // если задача удалить существующую задачу на сегодня,
+            //      то по пути туда ничего не делаем. если обнаруживаем, что части ветки нет, возвращаемся
+            //      по пути назад удаляем задачи
+
+            // в обратном ходе следует обратить внимание одну особенность.
+            // с одной стороны можно удалить задачу на уровень ниже, но она помимо удалённой по заказу подзадачи может содержать другие назначенные на сегодня
+            // и можно было бы удалитьвсю подзадачу, но это удалит и требуетмые подподзадачи
+            // пользователь может вызвать не из самого конца удаление, а например, задачу, а подзадачи могут остаться.
+            // это допустимо. всё равно удаляем её и идём всё вверх. правдо надо на уровен root удостовериться в удалении подподзадач из сегодня
+            // тогда условие удаления: если задача включает и другие подзадачи, то следует сделат отметку, что удаление закончено и просто возвращаемся            
+
+            // используется приём с return в середине. когда доходи до последнего элемента, то возвращаемся и продолжаем выполнять действия на обратном ходу.
+            // такое не сделать с enum, поскольку ветка упадёт только в один вариант, а второго - обратного - не достигнет. она уже попала в первый и нет резона выходить в другие
+            // можно сделать с двойным if, но это тоже самое, что не делать это
+
+            level++;
+            string subtaskId = string.Empty;
+
+            if (level != ids.Count - 1) // если это не последний уровень, добавляем подзадачу
+            {
+                subtaskId = ids[level + 1];
+
+                if (!subtasksContain(subtaskId))
+                    if (refreshType == RefreshType.Add)
+                    {
+                        added_for_today = true;
+                        subtasks.Add(new Objective(subtaskId, refreshToday));
+                    }
+
+                var subtask = getSubtaskById(subtaskId);
+                subtask.wolkAlongBranchThereAndBack(ids, level, refreshType);
+            }
+            else
+                return;
+
+            ////////// обратный ход //////////
+
+            if (refreshType == RefreshType.Delete)
+                if (deletion)
+                {
+                    if (subtasksContain(subtaskId))
+                    {
+                        var subtask = getSubtaskById(subtaskId);
+                        subtasks.Remove(subtask);
+                    }
+                    if (subtasks.Count > 0)
+                        deletion = false;
+                }
+        }
+
+        private bool subtasksContain(string id_)    // это subtasks в today, а не в root
+        {
+            bool contain = false;
+
+            foreach(Objective task in subtasks)
+                if (task.Id==id_)
+                {
+                    contain = true;
+                    break;
+                }
+
+            return contain;
+        }
+
+        private Objective getSubtaskById(string id_)
+        {
+            Objective task = null;
+
+            foreach (var subtask in subtasks)
+                if (subtask.Id == id_)
+                {
+                    task = subtask;
+                    break;
+                }            
+
+            return task;
+        }
+
+        private bool getSubtaskByIdIfExist(string id_, out Objective task)
+        {
+            bool contain = false;
+            task = null;
+
+            foreach (var subtask in subtasks)
+                if (subtask.Id == id_)
+                {
+                    contain = true;
+                    task = subtask;
+                    break;
+                }
+
+            return contain;
+        }
     }
 }

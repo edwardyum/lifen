@@ -8,12 +8,11 @@
     <RootPropertyPathName Name="subtasks" />
     <RootPropertyPathName Name="Name" />
     <RootPropertyPathName Name="Done" />
-    <RootPropertyPathName Name="delete_task_from_today_command" />
+    <RootPropertyPathName Name="Added_for_today" />
     <RootPropertyPathName Name="root" />
     <RootPropertyPathName Name="add_task_command" />
-    <RootPropertyPathName Name="add_task_for_today_command" />
-    <RootPropertyPathName Name="added_for_today" />
     <RootPropertyPathName Name="delete_task_command" />
+    <RootPropertyPathName Name="add_task_for_today_command" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">
@@ -66,6 +65,8 @@
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="Children" />
       <RootProperty Name="Orientation" />
+      <RootProperty Name="DataContext" />
+      <RootProperty Name="Height" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ItemsControl">
       <RootProperty Name="ItemsSource" />
@@ -100,23 +101,20 @@
       <RootProperty Name="Fill" />
     </RootType>
     <RootType FullName="lifen.ListsViewModel" />
-    <RootType FullName="Windows.UI.Xaml.Controls.ListView">
-      <RootProperty Name="ItemsSource" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="ItemsPanel" />
-      <RootProperty Name="ItemContainerStyle" />
-      <RootProperty Name="ItemTemplate" />
-      <RootProperty Name="Width" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="Content" />
       <RootProperty Name="Command" />
       <RootProperty Name="Height" />
       <RootProperty Name="Width" />
-      <RootProperty Name="Foreground" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="BorderBrush" />
+      <RootProperty Name="Background" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ListView">
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="ItemsPanel" />
+      <RootProperty Name="ItemContainerStyle" />
+      <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="Width" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ListViewItem" />
     <RootType FullName="Windows.UI.Xaml.Controls.Control">
@@ -132,7 +130,6 @@
       <RootProperty Name="Width" />
       <RootProperty Name="Background" />
       <RootProperty Name="Margin" />
-      <RootProperty Name="ContextFlyout" />
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="Opacity" />
     </RootType>
@@ -153,6 +150,9 @@
     <RootType FullName="Windows.UI.Xaml.Controls.Flyout">
       <RootProperty Name="Content" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ToggleSwitch">
+      <RootProperty Name="IsOn" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyout">
       <RootProperty Name="Items" />
     </RootType>
@@ -169,11 +169,13 @@
       <RootMethod Name="SetZIndex" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Primitives.ToggleButton">
-      <RootProperty Name="Content" />
-      <RootProperty Name="Command" />
       <RootProperty Name="IsChecked" />
+      <RootProperty Name="Margin" />
       <RootProperty Name="Height" />
       <RootProperty Name="Width" />
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="BorderBrush" />
+      <RootProperty Name="Content" />
     </RootType>
     <RootType FullName="lifen.BlankPage1" />
     <RootType FullName="Windows.UI.Xaml.Controls.NavigationView">

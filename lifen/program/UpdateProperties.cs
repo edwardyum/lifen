@@ -13,6 +13,10 @@ namespace lifen
     // правильным будет вынести функционал в отдельный класс, поскольку он
     // может присутствовать в нескольких классах и является отдельной сущьностью - предоставляет сгруппированные по смыслу функции
 
+    // кроме того позволяет
+    // добавлять новую информацию в базу данных - новые записи
+    // удалять существующую информацию из базы данных
+
     internal static class UpdateProperties
     {
         public static void set(object o, string name, object value, string table, string where, string condition, string column = null)
@@ -58,6 +62,7 @@ namespace lifen
             string value = SQLite.get_unic_cell_with_condition(table, column, where, condition);
             return value;
         }
+
 
 
     }

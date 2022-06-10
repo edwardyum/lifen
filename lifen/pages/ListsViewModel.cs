@@ -7,9 +7,12 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Reflection;
 using Windows.UI.Xaml;
+using System.ComponentModel;
 
 namespace lifen
 {
+    public delegate void RefreshToday(string id = null, RefreshType refreshType = RefreshType.Add);
+
     internal class ListsViewModel : DependencyObject
     {
         public static bool forming = false;
@@ -22,39 +25,73 @@ namespace lifen
 
         public static List<string> todayTasks;
 
+        RefreshToday refreshToday;  // работает только для добавления новой задачи на сегодня. пока отсутствует функционал удаления задачи из сегодня. для удаления используется полное обновление
+
+
         public ListsViewModel()
         {
-            root = new Objective("1", null);  // корневой узел
+            refreshToday = todayRefresh;
+            root = new Objective("1", null, refreshToday);  // корневой узел
 
-            checkToday();
-            today = new Objective(root.Id, root.Name, root.Description, root.Done);
-            root.create_today_only_structure_2(today);
+            today = new Objective("1", refreshToday);
+            formToday();
         }
 
-        private void checkToday()
+        private void formToday()
         {
+            today.subtasks.Clear();
             todayTasks = SQLite.get_column(Tables.planner, Planner.task, Planner.date, Time.now_date());
-
-            root.check_for_today();
-            root.check_for_today_back();
+            foreach (var idt in todayTasks)
+                todayRefresh(idt);
         }
 
-        //private List<string> getTodayTasks()
-        //{
-        //    return SQLite.get_column(Tables.planner, Planner.task, Planner.date, Time.now_date());
-        //}
+        // либо добавляем новую ветку, либо полностью обновляем все ветки
+        // это сделано ввиду относительно большой трудоёмкости создания метода удаления одной задачи на сегодня
+        private void todayRefresh(string id, RefreshType refreshType = RefreshType.Add)
+        {
+            switch (refreshType)
+            {
+                case RefreshType.Add:
+                    walk(id, refreshType);
+                    break;
+
+                case RefreshType.Delete:
+                    walk(id, refreshType);
+                    break;
+
+                case RefreshType.Total:
+                    formToday();
+                    break;
+            }
+        }
+
+        private void walk(string id, RefreshType refreshType)
+        {
+            List<string> ids = branch(id);
+            int level = -1;
+
+            Objective.deletion = true;
+            today.wolkAlongBranchThereAndBack(ids, level, refreshType);
+            Objective.deletion = true;
+        }
 
 
-        //private void refresh_data()
-        //{
-        //    root = null;
-        //    root = Manager.root;
+        public static List<string> branch(string id)
+        {
+            // считаем, что задача принадлежит только одной надзадаче
 
-        //    today = null;
-        //    today = Manager.today;
+            List<string> nodes = new() { id};
+            do
+            {
+                id = SQLite.get_unic_cell_with_condition(Tables.hierarchy, Hierachy.parent, Hierachy.child, id);
+                nodes.Add(id);
+            } while (id != "1");
 
+            nodes.Reverse();
 
-        //}
+            return nodes;
+        }
+
 
 
     }
