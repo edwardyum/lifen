@@ -20,66 +20,98 @@ namespace lifen
         public Objective root { get { return (Objective)GetValue(rootProperty); } set { SetValue(rootProperty, value); } }
         public static readonly DependencyProperty rootProperty = DependencyProperty.Register("root", typeof(Objective), typeof(ListsViewModel), new PropertyMetadata(null));
 
-        public Objective today { get { return (Objective)GetValue(todayProperty); } set { SetValue(todayProperty, value); } }
-        public static readonly DependencyProperty todayProperty = DependencyProperty.Register("today", typeof(Objective), typeof(ListsViewModel), new PropertyMetadata(null));
+
+        public static List<Objective> tasks = new();
+        public static List<Objective> todays = new();
 
         public static List<string> todayTasks;
-
-        RefreshToday refreshToday;  // работает только для добавления новой задачи на сегодня. пока отсутствует функционал удаления задачи из сегодня. для удаления используется полное обновление
 
 
         public ListsViewModel()
         {
-            refreshToday = todayRefresh;
-            root = new Objective("1", null, refreshToday);  // корневой узел
-
-            today = new Objective("1", refreshToday);
+            root = new Objective("1", null);
             formToday();
         }
 
         private void formToday()
         {
-            today.subtasks.Clear();
+            // формируем на сегодня не из списка задач на сегодня todays, а из базы данных. согласно моему принципу отсутствия дублирования информации
+            
+            // получаем список всех задач на сегодня
+            // получаем список всех веток
+            // обращаемся к каждому узлу ветки и добавляем в today нужную подзадачу из subdivisions
+
             todayTasks = SQLite.get_column(Tables.planner, Planner.task, Planner.date, Time.now_date());
+
             foreach (var idt in todayTasks)
-                todayRefresh(idt);
+                addBranchForNode(idt);
         }
 
-        // либо добавляем новую ветку, либо полностью обновляем все ветки
-        // это сделано ввиду относительно большой трудоёмкости создания метода удаления одной задачи на сегодня
-        private void todayRefresh(string id, RefreshType refreshType = RefreshType.Add)
+        public static void addBranchForNode(string id)    // для указанного узла находим ветку и все её узлы добавляем на сегодня
         {
-            switch (refreshType)
+            List<string> nodes = branch(id);
+
+            for (int i = 0; i < nodes.Count; i++)
             {
-                case RefreshType.Add:
-                    walk(id, refreshType);
-                    break;
+                Objective t = tasks.Find(x => x.Id == nodes[i]); //если перенесём t.Added_for_today = true; в цикл, то исключим добавление корневого узла "1" в задачи на сегодня при каждом вызове
 
-                case RefreshType.Delete:
-                    walk(id, refreshType);
-                    break;
+                if (i < nodes.Count - 1)
+                {
+                    Objective st = t.subtasks.Single(x => x.Id == nodes[i + 1]);
+                    st.added_for_today = true;
+                    if (!t.today.Contains(st))
+                        t.today.Add(st);
+                }
+            }
+        }
 
-                case RefreshType.Total:
-                    formToday();
+        public static void addToday(string id)       // добавить задачу на сегодня
+        {
+            addBranchForNode(id);
+        }
+
+        public static void addTodayAndSubtasks(string id)       // добавить задачу на сегодня и все подзадачи на всех уровнях
+        {
+            // получаем все подадачи
+            // для каждой подзадачи вызываем этот метод
+            // добавляем подзадачу в список на сегодня
+        }
+
+        public static void excludeToday(string id)   // убрать задачу из списка на сегодня
+        {
+            // бежим обратно по ветке и исключаем узлы из задач на сегодня
+            // если встречаем узел содержит другие задачи на сегодня прекращаем процесс исключения
+
+            List<string> nodes = branch(id);
+
+            for (int i = nodes.Count-2; i >= 0; i--)
+            {
+                Objective task = tasks.Find(x => x.Id == nodes[i]);
+                
+                Objective subTask = tasks.Find(x => x.Id == nodes[i + 1]);
+                subTask.added_for_today = false;
+
+                task.today.Remove(subTask);
+
+                if (task.today.Count != 0)
                     break;
             }
         }
 
-        private void walk(string id, RefreshType refreshType)
+        public static void excludeTodayAndSubtasks(string id)       // исключить задачу на сегодня и все подзадачи на всех уровнях
         {
-            List<string> ids = branch(id);
-            int level = -1;
-
-            Objective.deletion = true;
-            today.wolkAlongBranchThereAndBack(ids, level, refreshType);
-            Objective.deletion = true;
+            // получаем все подадачи
+            // для каждой подзадачи вызываем этот метод
+            // в конце метода исключаем подзадачу из списка на сегодня
         }
-
 
         public static List<string> branch(string id)
         {
-            // считаем, что задача принадлежит только одной надзадаче
+            // если пришёл запрос на поиск из корня - возвращаем пустой список
+            if (id == "1")
+                return new List<string>();
 
+            // считаем, что задача принадлежит только одной надзадаче
             List<string> nodes = new() { id};
             do
             {

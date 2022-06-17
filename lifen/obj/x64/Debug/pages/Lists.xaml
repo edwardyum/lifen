@@ -129,7 +129,7 @@
 
         <Button Content="новый проект" Command="{Binding root.add_task_command}" RelativePanel.RightOf="Projects" Height="30" Width="100"/>
 
-        <ListView x:ConnectionId='7' x:Name="Today"  ItemsSource="{Binding today.subtasks, UpdateSourceTrigger=PropertyChanged}" RelativePanel.Below="Projects" Height="500">
+        <ListView x:ConnectionId='7' x:Name="Today"  ItemsSource="{Binding root.today, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" RelativePanel.Below="Projects" Height="500">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal"/>
@@ -146,7 +146,7 @@
                     <RelativePanel Width="152">
                         <TextBox x:Name="ProjectName" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Width="150" Background="Black"/>
 
-                        <ListView x:Name="TasksList" ItemsSource="{Binding subtasks}" RelativePanel.Below="ProjectName">
+                        <ListView x:Name="TasksList" ItemsSource="{Binding today}" RelativePanel.Below="ProjectName">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>                                    
 
@@ -159,7 +159,7 @@
                                                     <Flyout>
                                                         
                                                         <RelativePanel>
-                                                            <ListView x:Name="ListSubtask" ItemsSource="{Binding subtasks}">
+                                                            <ListView x:Name="ListSubtask" ItemsSource="{Binding today}">
                                                                 <ItemsControl.ItemTemplate>
                                                                     <DataTemplate>
                                                                         

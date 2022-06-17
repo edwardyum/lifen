@@ -4,13 +4,13 @@
     <RootPropertyPathName Name="days" />
     <RootPropertyPathName Name="done" />
     <RootPropertyPathName Name="Date" />
+    <RootPropertyPathName Name="root" />
     <RootPropertyPathName Name="today" />
-    <RootPropertyPathName Name="subtasks" />
     <RootPropertyPathName Name="Name" />
     <RootPropertyPathName Name="Done" />
     <RootPropertyPathName Name="Added_for_today" />
-    <RootPropertyPathName Name="root" />
     <RootPropertyPathName Name="add_task_command" />
+    <RootPropertyPathName Name="subtasks" />
     <RootPropertyPathName Name="delete_task_command" />
     <RootPropertyPathName Name="add_task_for_today_command" />
   </Roots.PropertyPathNames>
@@ -34,8 +34,8 @@
       <RootProperty Name="ItemsPanel" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Data.Binding">
-      <RootProperty Name="UpdateSourceTrigger" />
       <RootProperty Name="Mode" />
+      <RootProperty Name="UpdateSourceTrigger" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />

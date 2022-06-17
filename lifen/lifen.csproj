@@ -147,6 +147,7 @@
     <Compile Include="my\Time.cs" />
     <Compile Include="program\ObservableCollectionExtension.cs" />
     <Compile Include="program\Refresh.cs" />
+    <Compile Include="program\RefreshSubtasks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="pages\SectionPages.cs" />
     <Compile Include="db\SQLite.cs" />
