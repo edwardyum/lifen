@@ -180,3 +180,8 @@ C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\obj\x64\Debug\pages\Diar
 C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\obj\x64\Debug\pages\Diary.xaml
 C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\obj\x64\Debug\pages\Diary.xbf
 C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\obj\x64\Debug\lifen.csproj.AssemblyReference.cache
+C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\bin\x64\Debug\pages\TimeLine.xbf
+C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\obj\x64\Debug\pages\TimeLine.g.i.cs
+C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\obj\x64\Debug\pages\TimeLine.g.cs
+C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\obj\x64\Debug\pages\TimeLine.xaml
+C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\obj\x64\Debug\pages\TimeLine.xbf

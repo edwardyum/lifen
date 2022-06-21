@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -79,6 +80,29 @@ namespace lifen
             s = s.TrimEnd(chars);
 
             return s;
+        }
+
+
+        public static ObservableCollection<DateTime> daysSetFromBeginingOfEyar()    // список дней с начала года до текущего дня. первый день выбирается как первый день недели, в которую начался год.
+        {
+            ObservableCollection<DateTime> days = new();
+
+            string begin = $"{DateTime.Now.Year.ToString()}.01.01";
+            DateTime initial = DateTime.Parse(begin);
+
+            int weekDay = (int)initial.DayOfWeek;               // перед началом года - для того, чтобы набор начинался с понедельника
+            initial = initial.AddDays(-weekDay + 1);
+
+            do                                                  // начиная с начала года
+            {
+                days.Add(initial);
+                initial = initial.AddDays(1);
+
+            } while ((DateTime.Now - initial).Days > 0);
+
+            days.Add(initial);
+
+            return days;
         }
 
     }

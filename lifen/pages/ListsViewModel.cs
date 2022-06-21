@@ -29,7 +29,7 @@ namespace lifen
 
         public ListsViewModel()
         {
-            root = new Objective("1", null);
+            root = new Objective("1");
             formToday();
         }
 
@@ -124,7 +124,12 @@ namespace lifen
             return nodes;
         }
 
-
+        public static Objective getParent(string idChild)
+        {
+            string  idp = SQLite.get_unic_cell_with_condition(Tables.hierarchy, Hierachy.parent, Hierachy.child, idChild);
+            Objective parent = tasks.Find(x=>x.Id == idp);
+            return parent;
+        }
 
     }
 }

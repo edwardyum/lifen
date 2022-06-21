@@ -13,6 +13,7 @@
         <NavigationView.MenuItems>
             <NavigationViewItem Content="задачи" Tag="BlankPage1"/>
             <NavigationViewItem Content="календарь" Tag="Diary"/>
+            <NavigationViewItem Content="time line" Tag="TimeLine"/>
         </NavigationView.MenuItems>
 
         <Frame x:Name="contentFrame" />

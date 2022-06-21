@@ -18,16 +18,11 @@ namespace lifen
 
         private void form()
         {
-            int month = DateTime.Now.Month-1;
-            int year = DateTime.Now.Year;
+            var dates = Tools.daysSetFromBeginingOfEyar();
 
-            int ndays = DateTime.DaysInMonth(year, month);
-
-            for (int i = 0; i < ndays; i++)
-            {
-                string date = $"{(i + 1)}.{month}.{year}";
-                days.Add(new Day(DateTime.Parse(date)));
-            }
+            foreach ( var date in dates)
+                days.Add(new Day(date));
         }
+
     }
 }

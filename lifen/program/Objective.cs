@@ -34,9 +34,6 @@ namespace lifen
         public string DataCompletion { get { return data_completion; } set { setup(nameof(data_completion), value, Tasks.completion_date); } }
 
 
-
-        RefreshSubtasks refresh;    // делагет этого уровня
-        RefreshSubtasks refreshUp;  // делегат 
         public ObservableCollection<Objective> subtasks { get; set; } = new ObservableCollection<Objective>();
 
         // !!! внимание !!!     зависимые свойства не работают из-за того, что они static. это путает всю рекурсивную логику , а убрать static не получается, в этом случае не отрабатывает внутренний меанизм DependencyObject
@@ -51,10 +48,9 @@ namespace lifen
 
 
 
-        public Objective(string Id, RefreshSubtasks refreshSubtasks)
+        public Objective(string Id)
         {
             id = Id;
-            refreshUp = refreshSubtasks;
 
             initialize();
             form();
@@ -72,8 +68,6 @@ namespace lifen
         {
             add_task_command_ = new CommandBase(add_task);
             delete_task_command_ = new CommandBase(delete_task);
-
-            refresh = refreshSubtasks;
         }
 
 
@@ -118,7 +112,7 @@ namespace lifen
 
             foreach (string sid in missing)
             {
-                Objective subtask = new Objective(sid, refresh);
+                Objective subtask = new Objective(sid);
                 subtasks.Add(subtask);
 
                 if(subtask.Added_for_today)
@@ -219,6 +213,19 @@ namespace lifen
 
         public void delete_task()
         {
+            // !!! внимание !!! важна последовательность действий. в методе выполняется несколько действий. удаление задачи из списка задач и из таблицы иерархий, из списка на сегодня и обновление родтельской задачи
+            // однако при удалении из списка иерархии не могут выполниться удаление на сегодня и обновление родителя.
+            // поэтому сначала удаляем из списка на сегодня, возможно в будущем, если сделаю удаление задач на сегодня через обновление списков, как в subtasks, то это будет не актуально и можно будет в любом порядке.
+            // потом получаем объект родителя, потом удаляем задачу на сегодня, потом обновляем родителя. иначе родителя не получить - таблица иерархии уже не имеет нужной записи.
+            
+
+            // удаляем из списков на сегодня
+            delete_task_from_today();
+
+
+            Objective parent = ListsViewModel.getParent(Id);
+
+            // удаляем из базы данных
             if (subtasks != null)
                 for (int i = 0; i < subtasks.Count; i++)
                     subtasks[i].delete_task();
@@ -229,12 +236,10 @@ namespace lifen
             // удачная находнка - инкапсуляция. удаляем не по ссылке на родителя или какие-то другие объекты,
             // а все строки, в которые входит текущая задача. удаляется у всех надзадач её включающих. + убирается необходимость в поле id родителя.
 
-            delete_task_from_today();   // лучше вызвать методв в классе Objective, чем в SQLite. более универсально.
 
+            // обновляем
             refreshSubtasks();
-
-            if (refreshUp != null)
-                refreshUp();
+            parent.refreshSubtasks();
         }
 
 

@@ -154,6 +154,9 @@
     <Compile Include="my\Tools.cs" />
     <Compile Include="program\UpdateProperties.cs" />
     <Compile Include="program\RefreshType.cs" />
+    <Compile Include="pages\TimeLine.xaml.cs">
+      <DependentUpon>TimeLine.xaml</DependentUpon>
+    </Compile>
     <Compile Include="uwp\CommandBase.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +190,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\TimeLine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

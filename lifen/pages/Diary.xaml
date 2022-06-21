@@ -12,8 +12,9 @@
         <local:DiaryViewModel/>
     </Page.DataContext>
 
-    <GridView ItemsSource="{Binding days}" >
-        <GridView.ItemTemplate>
+    <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible" Height="750" FlowDirection="RightToLeft">
+        <GridView ItemsSource="{Binding days}" IsItemClickEnabled="True" FlowDirection="LeftToRight">
+            <GridView.ItemTemplate>
             <DataTemplate>
                 <RelativePanel Width="200" Height="100">
                     <!--<Image Source="{Binding image}" Stretch="UniformToFill"/>-->
@@ -43,5 +44,6 @@
             </ItemsPanelTemplate>
         </GridView.ItemsPanel>
     </GridView>
+    </ScrollViewer>
     
 </Page>
