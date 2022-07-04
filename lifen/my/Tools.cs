@@ -105,5 +105,11 @@ namespace lifen
             return days;
         }
 
+        public static int stringToInt(string s)
+        {
+            if(string.IsNullOrEmpty(s))
+                s = "0";
+            return int.Parse(s);
+        }
     }
 }

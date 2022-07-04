@@ -21,6 +21,7 @@ namespace lifen
         private bool done = false;
         private string data_creation = string.Empty;
         private string data_completion = string.Empty;
+        private int importance = 0;
 
         public bool added_for_today = false;
         public bool Added_for_today { get { return added_for_today; } set { if (value) add_task_for_today(); else delete_task_from_today(); } }
@@ -32,6 +33,7 @@ namespace lifen
         public string Description { get { return description; } set { setup(nameof(description), value); } }
         public bool Done { get { return done; } set { setup(nameof(done), value); DataCompletion = Time.now(); } }
         public string DataCompletion { get { return data_completion; } set { setup(nameof(data_completion), value, Tasks.completion_date); } }
+        public int Importance { get => importance; set { setup(nameof(importance), value); sortInParent(); }}
 
 
         public ObservableCollection<Objective> subtasks { get; set; } = new ObservableCollection<Objective>();
@@ -46,7 +48,7 @@ namespace lifen
         private CommandBase add_task_command_; public ICommand add_task_command => add_task_command_;
         private CommandBase delete_task_command_; public ICommand delete_task_command => delete_task_command_;
 
-
+        
 
         public Objective(string Id)
         {
@@ -81,21 +83,32 @@ namespace lifen
         {
             formBase();
             refreshSubtasks();
+            if (id != "1")
+                sort();
         }
 
+        private DataTable data = null;
         private void formBase()
         {
-            DataTable data = SQLite.get_unic_row_with_condition_1(Tables.tasks, Tasks.Id, id);
+            data = SQLite.get_unic_row_with_condition_1(Tables.tasks, Tasks.Id, id);
 
             // id - уже есть
-            data_creation = data.Rows[0][Tasks.creation_date].ToString();
-            name = data.Rows[0][Tasks.name].ToString();
-            description = data.Rows[0][Tasks.description].ToString();
-            done = Tools.string_to_bool(data.Rows[0][Tasks.done].ToString());
-            data_completion = data.Rows[0][Tasks.completion_date].ToString();
+            data_creation = getValue(Tasks.creation_date);
+            name = getValue(Tasks.name);
+            description = getValue(Tasks.description);
+            done = Tools.string_to_bool(getValue(Tasks.done));
+            data_completion = getValue(Tasks.completion_date);
+            importance = Tools.stringToInt(getValue(Tasks.importance));
+
+            data = null;
 
             if (todayExists())
                 added_for_today = true;
+        }        
+
+        private string getValue(string field)
+        {
+            return data.Rows[0][field].ToString();
         }
 
         private void refreshSubtasks()
@@ -176,12 +189,25 @@ namespace lifen
             return superfluous;
         }
 
-        private Dictionary<string, string> this_task()
+
+        public void sort()
         {
-            Dictionary<string, string> where = new Dictionary<string, string>();
-            where.Add(Tasks.Id, id);
-            return where;
-        }        
+            subtasks.BubbleSort();
+            subtasks.ReverceMy();
+        }
+
+        private void sortInParent()
+        {
+            var parent = ListsViewModel.getParent(id);
+            parent.sort();
+        }
+
+        //private Dictionary<string, string> this_task()
+        //{
+        //    Dictionary<string, string> where = new Dictionary<string, string>();
+        //    where.Add(Tasks.Id, id);
+        //    return where;
+        //}        
 
         public void add_task()
         {

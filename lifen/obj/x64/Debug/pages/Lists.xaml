@@ -60,12 +60,31 @@
 
                                     <RelativePanel Height="60" Width="120" Background="Black" Margin="0,3,0,0" CornerRadius="2">
                                         <Rectangle Width="50" Height="100"/>
-                                        <TextBox x:Name="TaskName" TextWrapping="NoWrap" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=LostFocus }" ToolTipService.ToolTip="{Binding Name}" BorderThickness="0" Opacity="100" Canvas.ZIndex="1"  Width="150"/>
+                                        <TextBox x:Name="TaskName" TextWrapping="NoWrap" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" ToolTipService.ToolTip="{Binding Name}" BorderThickness="0" Opacity="100" Canvas.ZIndex="1"  Width="150"/>
                                         <CheckBox x:Name="Done" IsChecked="{Binding Done, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" RelativePanel.Below="TaskName" Height="30" Width="10" />
-                                        <!--<Button x:Name="AddToday" Command="{Binding add_task_for_today_command}" RelativePanel.Below="TaskName" RelativePanel.AlignVerticalCenterWith="Done" Margin="27,0,0,0" Height="20" Width="30" Foreground="Gray" BorderBrush="#323234"/>-->
-                                            <ToggleButton x:Name="AddToday" IsChecked="{Binding Added_for_today, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" RelativePanel.Below="TaskName" RelativePanel.AlignVerticalCenterWith="Done" Margin="27,0,0,0" Height="20" Width="30" Foreground="Gray" BorderBrush="#323234"/>
+                                        <TextBox Name="Importance" Text="{Binding Importance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Margin="22,0,0,0" RelativePanel.AlignVerticalCenterWith="Done" Height="20" Width="60"/>
+                                        <!--<DropDownButton Name="Importance" Margin="22,0,0,0" RelativePanel.Below="TaskName" RelativePanel.AlignVerticalCenterWith="Done" Height="20" Width="30" CornerRadius="5">
+                                            <DropDownButton.Flyout>
+                                                <Flyout>
+                                                    <ListView>
+                                                        <ToggleButton Content="10" />
+                                                        <ToggleButton Content="9"/>
+                                                        <ToggleButton Content="8"/>
+                                                        <ToggleButton Content="7"/>
+                                                        <ToggleButton Content="6"/>
+                                                        <ToggleButton Content="5"/>
+                                                        <ToggleButton Content="4"/>
+                                                        <ToggleButton Content="3"/>
+                                                        <ToggleButton Content="2"/>
+                                                        <ToggleButton Content="1"/>
+                                                        <ToggleButton Content="0"/>
+                                                    </ListView>
+                                                </Flyout>
+                                            </DropDownButton.Flyout>
+                                        </DropDownButton>-->
+                                            <ToggleButton x:Name="AddToday" IsChecked="{Binding Added_for_today, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Margin="50,0,0,0" RelativePanel.AlignVerticalCenterWith="Done" Height="20" Width="30" Foreground="Gray" BorderBrush="#323234"/>
 
-                                            <DropDownButton Name="SubTasks" RelativePanel.Below="TaskName" RelativePanel.AlignRightWith="TaskName" RelativePanel.AlignVerticalCenterWith="Done" Height="20" Width="50" CornerRadius="5" BorderBrush="#323234">
+                                        <DropDownButton Name="SubTasks" RelativePanel.Below="TaskName" RelativePanel.AlignRightWith="TaskName" RelativePanel.AlignVerticalCenterWith="Done" Height="20" Width="37" CornerRadius="5" BorderBrush="#323234">
                                             <DropDownButton.Flyout>
                                                 <Flyout>
 
@@ -75,10 +94,11 @@
                                                                 <DataTemplate>
 
                                                                     <RelativePanel>
-                                                                        <CheckBox x:Name="Done" IsChecked="{Binding Done, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                                                         <TextBox x:Name="SubtaskName" TextWrapping="NoWrap" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="27,0,0,0" Width="300"/>
+                                                                        <CheckBox x:Name="Done" IsChecked="{Binding Done, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                                                         <Button x:Name="AddToday" Content="на сегодня" Command="{Binding add_task_for_today_command}"  RelativePanel.RightOf="SubtaskName" Height="30" Width="100"/>
                                                                         <ToggleButton Content="на сегодня" IsChecked="{Binding Added_for_today, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" RelativePanel.RightOf="SubtaskName" Height="30" Width="100"/>
+                                                                            
                                                                         <RelativePanel.ContextFlyout>
                                                                             <MenuFlyout>
                                                                                 <MenuFlyoutItem Text="удалить" Command="{Binding delete_task_command, UpdateSourceTrigger=PropertyChanged}"/>

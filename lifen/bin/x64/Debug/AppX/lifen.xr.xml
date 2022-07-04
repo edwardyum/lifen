@@ -13,6 +13,7 @@
     <RootPropertyPathName Name="subtasks" />
     <RootPropertyPathName Name="delete_task_command" />
     <RootPropertyPathName Name="add_task_for_today_command" />
+    <RootPropertyPathName Name="Importance" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">
@@ -143,6 +144,8 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="Opacity" />
+      <RootProperty Name="Name" />
+      <RootProperty Name="Height" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.CheckBox">
       <RootProperty Name="IsChecked" />

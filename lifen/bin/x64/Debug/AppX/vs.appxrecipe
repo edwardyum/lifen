@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-06-21T14:08:07.980</Modified>
+      <Modified>2022-07-04T13:32:32.316</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\bin\x64\Debug\lifen.exe">
       <PackagePath>entrypoint\lifen.exe</PackagePath>
-      <Modified>2022-06-21T14:08:07.379</Modified>
+      <Modified>2022-07-04T13:32:31.382</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\.nuget\packages\microsoft.data.sqlite.core\6.0.2\lib\netstandard2.0\Microsoft.Data.Sqlite.dll">
       <PackagePath>Microsoft.Data.Sqlite.dll</PackagePath>
@@ -106,27 +106,27 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\bin\x64\Debug\lifen.xr.xml">
       <PackagePath>lifen.xr.xml</PackagePath>
-      <Modified>2022-06-21T14:08:07.270</Modified>
+      <Modified>2022-07-04T12:21:43.206</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2022-06-21T14:08:07.294</Modified>
+      <Modified>2022-07-04T13:32:31.284</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\bin\x64\Debug\pages\Diary.xbf">
       <PackagePath>pages\Diary.xbf</PackagePath>
-      <Modified>2022-06-21T14:08:07.294</Modified>
+      <Modified>2022-07-04T13:32:31.285</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\bin\x64\Debug\pages\Lists.xbf">
       <PackagePath>pages\Lists.xbf</PackagePath>
-      <Modified>2022-06-21T14:08:07.284</Modified>
+      <Modified>2022-07-04T13:32:31.278</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2022-06-21T14:08:07.294</Modified>
+      <Modified>2022-07-04T13:32:31.285</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\bin\x64\Debug\pages\TimeLine.xbf">
       <PackagePath>pages\TimeLine.xbf</PackagePath>
-      <Modified>2022-06-21T14:08:07.294</Modified>
+      <Modified>2022-07-04T13:32:31.285</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.19041.0\\redist\Debug\X64\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -138,11 +138,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2022-06-21T13:46:55.554</Modified>
+      <Modified>2022-07-04T13:13:15.547</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\Desktop\системы\lifen\lifen\bin\x64\Debug\Core\lifen.exe">
       <PackagePath>lifen.exe</PackagePath>
-      <Modified>2022-06-21T14:08:07.976</Modified>
+      <Modified>2022-07-04T13:32:32.310</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\e.yumagulov\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\lib\uap10.0\Microsoft.UI.Xaml.winmd">
       <PackagePath>Microsoft.UI.Xaml.winmd</PackagePath>
